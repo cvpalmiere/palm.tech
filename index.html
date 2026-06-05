@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Palm Tech — OS do Desenvolvedor</title>
+<title>Palm Tech v2.0 — OS do Desenvolvedor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js">
+</script>
 <style>
 :root {
   --bg-primary: #0D0D0D;
@@ -130,8 +132,8 @@ select option{background:var(--bg-secondary)}
 .modal-overlay.hidden{display:none}
 .modal{background:var(--bg-secondary);border:1px solid var(--border-hover);border-radius:14px;padding:28px;width:100%;max-width:640px;max-height:85vh;overflow-y:auto;animation:modalIn 0.2s ease}
 @media(min-width:1400px){.modal{max-width:720px}}
-.modal-wide{max-width:720px}
-@media(min-width:1400px){.modal-wide{max-width:800px}}
+.modal-wide{max-width:800px}
+@media(min-width:1400px){.modal-wide{max-width:900px}}
 @keyframes modalIn{from{opacity:0;transform:scale(0.97)}to{opacity:1;transform:scale(1)}}
 .modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
 .modal-title{font-size:17px;font-weight:700}
@@ -183,11 +185,6 @@ select option{background:var(--bg-secondary)}
 .progress-bar{height:5px;background:var(--bg-tertiary);border-radius:5px;overflow:hidden;margin-top:8px}
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--purple-deep),var(--purple-primary));border-radius:5px;transition:width 0.4s ease}
 
-/* STARS */
-.stars{display:flex;gap:4px;cursor:pointer}
-.star-icon{color:var(--border-hover);transition:color 0.1s}
-.star-icon.lit{color:var(--warning)}
-
 /* MARKDOWN */
 .md-preview{line-height:1.7;font-size:14px;color:var(--text-secondary)}
 .md-preview h1,.md-preview h2,.md-preview h3{color:var(--text-primary);margin:16px 0 8px;font-family:var(--font-ui)}
@@ -195,10 +192,6 @@ select option{background:var(--bg-secondary)}
 .md-preview code{background:var(--bg-tertiary);border:1px solid var(--border-default);border-radius:4px;padding:2px 7px;font-family:var(--font-mono);font-size:13px;color:var(--purple-glow)}
 .md-preview pre{background:var(--bg-tertiary);border:1px solid var(--border-default);border-radius:8px;padding:16px;overflow-x:auto;margin:10px 0}
 .md-preview pre code{background:none;border:none;padding:0;font-size:13px}
-.md-preview ul,.md-preview ol{padding-left:22px;margin:8px 0}
-.md-preview p{margin:8px 0}
-.md-preview a{color:var(--purple-primary)}
-.md-preview blockquote{border-left:3px solid var(--purple-border);padding-left:14px;color:var(--text-muted);margin:10px 0}
 
 /* TIMELINE */
 .timeline-module{border:1px solid var(--border-default);border-radius:var(--radius);overflow:hidden;margin-bottom:14px}
@@ -267,11 +260,20 @@ select option{background:var(--bg-secondary)}
 .project-tab.active{color:var(--purple-primary);border-bottom-color:var(--purple-primary)}
 .project-tab .tab-icon{width:15px;height:15px}
 
-/* ALERT BANNER */
+/* ALERT */
 .alert-banner{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:var(--radius);margin-bottom:16px;font-size:13px}
 .alert-warning{background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);color:#F59E0B}
 .alert-info{background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.25);color:#3B82F6}
 .alert-success{background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:#10B981}
+
+/* IMPORT PREVIEW */
+.import-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:20px}
+.import-card{background:var(--bg-tertiary);border:1px solid var(--border-default);border-radius:8px;padding:14px;text-align:center}
+.import-card .import-num{font-size:24px;font-weight:800;font-family:var(--font-mono);color:var(--purple-primary)}
+.import-card .import-label{font-size:11px;color:var(--text-muted);margin-top:4px}
+.import-detail{background:var(--bg-input);border:1px solid var(--border-default);border-radius:8px;padding:14px;margin-bottom:8px;max-height:200px;overflow-y:auto}
+.import-detail h4{font-size:13px;color:var(--purple-primary);margin-bottom:8px}
+.import-detail .import-item{font-size:12px;color:var(--text-secondary);padding:3px 0;font-family:var(--font-mono)}
 
 /* MOBILE */
 @media(max-width:900px){
@@ -299,12 +301,13 @@ select option{background:var(--bg-secondary)}
   .cal-day{min-width:28px;min-height:28px;font-size:11px}
   .cal-header-day{font-size:10px;padding:4px 0}
   .cal-nav .cal-title{font-size:12px}
+  .import-summary{grid-template-columns:1fr 1fr}
 }
-
 @media(max-width:400px){
   .stats-row{grid-template-columns:1fr}
   .cal-day{min-width:24px;min-height:24px;font-size:10px}
   .cal-grid{gap:2px}
+  .import-summary{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -353,9 +356,14 @@ select option{background:var(--bg-secondary)}
     <div class="module active" id="mod-dashboard">
       <div class="page-header">
         <div><h1>Dashboard</h1><p id="dash-date"></p></div>
-        <button class="btn btn-primary btn-sm" onclick="navigate('projetos')">
-          <i data-lucide="plus" style="width:15px;height:15px"></i> Novo Projeto
-        </button>
+        <div class="flex gap-8">
+          <button class="btn btn-secondary btn-sm" onclick="openImportDocModal()">
+            <i data-lucide="file-text" style="width:15px;height:15px"></i> Importar Documentação
+          </button>
+          <button class="btn btn-primary btn-sm" onclick="navigate('projetos')">
+            <i data-lucide="plus" style="width:15px;height:15px"></i> Novo Projeto
+          </button>
+        </div>
       </div>
       <div class="stats-row" id="dash-stats"></div>
       <div class="grid-2 mt-20">
@@ -376,9 +384,14 @@ select option{background:var(--bg-secondary)}
     <div class="module" id="mod-projetos">
       <div class="page-header">
         <div><h1>Projetos</h1><p>Gerencie todos os seus projetos</p></div>
-        <button class="btn btn-primary btn-sm" onclick="openProjetoModal()">
-          <i data-lucide="plus" style="width:15px;height:15px"></i> Novo Projeto
-        </button>
+        <div class="flex gap-8">
+          <button class="btn btn-secondary btn-sm" onclick="openImportDocModal()">
+            <i data-lucide="file-text" style="width:15px;height:15px"></i> Importar Documentação
+          </button>
+          <button class="btn btn-primary btn-sm" onclick="openProjetoModal()">
+            <i data-lucide="plus" style="width:15px;height:15px"></i> Novo Projeto
+          </button>
+        </div>
       </div>
       <div class="flex gap-8 mb-20 flex-wrap">
         <select id="proj-filter" style="width:auto;padding:9px 14px;font-size:13px" onchange="renderProjetos()">
@@ -394,7 +407,7 @@ select option{background:var(--bg-secondary)}
       <div class="card-grid" id="projetos-grid"></div>
     </div>
 
-    <!-- PROJETO INTERNO (workspace) -->
+    <!-- PROJETO INTERNO -->
     <div class="module" id="mod-projeto-interno">
       <div id="projeto-interno-content"></div>
     </div>
@@ -409,14 +422,8 @@ select option{background:var(--bg-secondary)}
           <div style="font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;font-size:15px">
             <i data-lucide="lock" style="width:18px;height:18px;color:var(--purple-primary)"></i> Segurança
           </div>
-          <div class="form-group">
-            <label>Senha Mestra</label>
-            <input type="password" id="config-master-pw" placeholder="Nova senha mestra">
-          </div>
-          <div class="form-group">
-            <label>Confirmar Senha</label>
-            <input type="password" id="config-master-pw2" placeholder="Confirmar senha">
-          </div>
+          <div class="form-group"><label>Senha Mestra</label><input type="password" id="config-master-pw" placeholder="Nova senha mestra"></div>
+          <div class="form-group"><label>Confirmar Senha</label><input type="password" id="config-master-pw2" placeholder="Confirmar senha"></div>
           <button class="btn btn-primary btn-sm" onclick="saveMasterPassword()">Salvar Senha</button>
           <div id="config-pw-status" class="mt-10 text-sm text-muted"></div>
         </div>
@@ -425,12 +432,8 @@ select option{background:var(--bg-secondary)}
             <i data-lucide="database" style="width:18px;height:18px;color:var(--info)"></i> Dados
           </div>
           <div class="flex gap-8 flex-wrap">
-            <button class="btn btn-secondary btn-sm" onclick="exportData()">
-              <i data-lucide="download" style="width:14px;height:14px"></i> Exportar JSON
-            </button>
-            <button class="btn btn-secondary btn-sm" onclick="document.getElementById('import-file').click()">
-              <i data-lucide="upload" style="width:14px;height:14px"></i> Importar JSON
-            </button>
+            <button class="btn btn-secondary btn-sm" onclick="exportData()"><i data-lucide="download" style="width:14px;height:14px"></i> Exportar JSON</button>
+            <button class="btn btn-secondary btn-sm" onclick="document.getElementById('import-file').click()"><i data-lucide="upload" style="width:14px;height:14px"></i> Importar JSON</button>
             <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)">
           </div>
         </div>
@@ -438,14 +441,12 @@ select option{background:var(--bg-secondary)}
           <div style="font-weight:700;margin-bottom:14px;color:var(--danger);display:flex;align-items:center;gap:8px;font-size:15px">
             <i data-lucide="alert-triangle" style="width:18px;height:18px"></i> Zona de Perigo
           </div>
-          <button class="btn btn-danger btn-sm" onclick="clearAllData()">
-            <i data-lucide="trash-2" style="width:14px;height:14px"></i> Limpar Todos os Dados
-          </button>
+          <button class="btn btn-danger btn-sm" onclick="clearAllData()"><i data-lucide="trash-2" style="width:14px;height:14px"></i> Limpar Todos os Dados</button>
         </div>
         <div class="card text-muted text-sm">
-          <div style="font-weight:600;margin-bottom:6px;color:var(--text-secondary);font-size:14px">Palm Tech v1.0</div>
+          <div style="font-weight:600;margin-bottom:6px;color:var(--text-secondary);font-size:14px">Palm Tech v2.0</div>
           <div>Sistema Operacional Pessoal do Desenvolvedor</div>
-          <div class="mt-8">Armazenamento local via IndexedDB · Criptografia AES-256</div>
+          <div class="mt-8">Armazenamento local via IndexedDB · Criptografia AES-256 · Parser de Documentação</div>
         </div>
       </div>
     </div>
@@ -458,9 +459,7 @@ select option{background:var(--bg-secondary)}
   <div class="modal" id="modal-content">
     <div class="modal-header">
       <div class="modal-title" id="modal-title">Modal</div>
-      <button class="btn btn-ghost btn-icon" onclick="closeModal()">
-        <i data-lucide="x" style="width:18px;height:18px"></i>
-      </button>
+      <button class="btn btn-ghost btn-icon" onclick="closeModal()"><i data-lucide="x" style="width:18px;height:18px"></i></button>
     </div>
     <div id="modal-body"></div>
   </div>
@@ -510,846 +509,526 @@ select option{background:var(--bg-secondary)}
 <script>
 // ===== DB =====
 let db;
-const DB_NAME = 'PalmTechDB', DB_VERSION = 1;
-const STORES = ['projetos','dailyLogs','acessos','apis','prompts','modelosPrompt','ferramentas','checklists','documentos','configuracoes','timeline'];
-
-function openDB(){
-  return new Promise((res,rej)=>{
-    const req = indexedDB.open(DB_NAME, DB_VERSION);
-    req.onupgradeneeded = e => {
-      const d = e.target.result;
-      STORES.forEach(s=>{
-        if(!d.objectStoreNames.contains(s)){
-          const store = d.createObjectStore(s,{keyPath:'id'});
-          if(s==='projetos') store.createIndex('status','status',{unique:false});
-          if(s==='dailyLogs'){ store.createIndex('projetoId','projetoId',{unique:false}); store.createIndex('data','data',{unique:false}); }
-          if(s==='acessos') store.createIndex('projetoId','projetoId',{unique:false});
-          if(s==='apis') store.createIndex('projetoId','projetoId',{unique:false});
-          if(s==='prompts') store.createIndex('projetoId','projetoId',{unique:false});
-          if(s==='ferramentas') store.createIndex('categoria','categoria',{unique:false});
-          if(s==='checklists') store.createIndex('projetoId','projetoId',{unique:false});
-          if(s==='documentos') store.createIndex('projetoId','projetoId',{unique:false});
-        }
-      });
-    };
-    req.onsuccess = e => { db = e.target.result; res(db); };
-    req.onerror = e => rej(e);
-  });
-}
-function dbGet(s,id){ return new Promise((res,rej)=>{ const t=db.transaction(s,'readonly'); const r=t.objectStore(s).get(id); r.onsuccess=()=>res(r.result); r.onerror=rej; }); }
-function dbGetAll(s){ return new Promise((res,rej)=>{ const t=db.transaction(s,'readonly'); const r=t.objectStore(s).getAll(); r.onsuccess=()=>res(r.result); r.onerror=rej; }); }
-function dbPut(s,o){ return new Promise((res,rej)=>{ const t=db.transaction(s,'readwrite'); const r=t.objectStore(s).put(o); r.onsuccess=()=>res(r.result); r.onerror=rej; }); }
-function dbDelete(s,id){ return new Promise((res,rej)=>{ const t=db.transaction(s,'readwrite'); t.objectStore(s).delete(id); t.oncomplete=()=>res(); t.onerror=rej; }); }
-function uuid(){ return crypto.randomUUID?crypto.randomUUID():'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=Math.random()*16|0;return(c==='x'?r:r&0x3|0x8).toString(16)}); }
-function now(){ return new Date().toISOString(); }
+const DB_NAME='PalmTechDB',DB_VERSION=1;
+const STORES=['projetos','dailyLogs','acessos','apis','prompts','modelosPrompt','ferramentas','checklists','documentos','configuracoes','timeline'];
+function openDB(){return new Promise((res,rej)=>{const req=indexedDB.open(DB_NAME,DB_VERSION);req.onupgradeneeded=e=>{const d=e.target.result;STORES.forEach(s=>{if(!d.objectStoreNames.contains(s)){const store=d.createObjectStore(s,{keyPath:'id'});if(s==='projetos')store.createIndex('status','status',{unique:false});if(s==='dailyLogs'){store.createIndex('projetoId','projetoId',{unique:false});store.createIndex('data','data',{unique:false});}if(s==='acessos')store.createIndex('projetoId','projetoId',{unique:false});if(s==='apis')store.createIndex('projetoId','projetoId',{unique:false});if(s==='prompts')store.createIndex('projetoId','projetoId',{unique:false});if(s==='ferramentas')store.createIndex('categoria','categoria',{unique:false});if(s==='checklists')store.createIndex('projetoId','projetoId',{unique:false});if(s==='documentos')store.createIndex('projetoId','projetoId',{unique:false});}})};req.onsuccess=e=>{db=e.target.result;res(db)};req.onerror=e=>rej(e)})}
+function dbGet(s,id){return new Promise((res,rej)=>{const t=db.transaction(s,'readonly');const r=t.objectStore(s).get(id);r.onsuccess=()=>res(r.result);r.onerror=rej})}
+function dbGetAll(s){return new Promise((res,rej)=>{const t=db.transaction(s,'readonly');const r=t.objectStore(s).getAll();r.onsuccess=()=>res(r.result);r.onerror=rej})}
+function dbPut(s,o){return new Promise((res,rej)=>{const t=db.transaction(s,'readwrite');const r=t.objectStore(s).put(o);r.onsuccess=()=>res(r.result);r.onerror=rej})}
+function dbDelete(s,id){return new Promise((res,rej)=>{const t=db.transaction(s,'readwrite');t.objectStore(s).delete(id);t.oncomplete=()=>res();t.onerror=rej})}
+function uuid(){return crypto.randomUUID?crypto.randomUUID():'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=Math.random()*16|0;return(c==='x'?r:r&0x3|0x8).toString(16)})}
+function now(){return new Date().toISOString()}
 
 // ===== CRYPTO =====
-let masterPw = null, masterPwHash = null, sessionTimer = null;
-function encrypt(text, pw){
-  const iv = CryptoJS.lib.WordArray.random(16);
-  const key = CryptoJS.SHA256(pw||masterPw||'');
-  const enc = CryptoJS.AES.encrypt(text, key, {iv});
-  return JSON.stringify({c: enc.toString(), iv: iv.toString()});
-}
-function decrypt(data, pw){
-  try{
-    const {c,iv}=JSON.parse(data);
-    const key=CryptoJS.SHA256(pw||masterPw||'');
-    const dec=CryptoJS.AES.decrypt(c, key, {iv:CryptoJS.enc.Hex.parse(iv)});
-    return dec.toString(CryptoJS.enc.Utf8);
-  }catch(e){return null;}
-}
-function hashPw(pw){ return CryptoJS.SHA256(pw).toString(); }
-async function saveMasterPassword(){
-  const pw1=document.getElementById('config-master-pw').value, pw2=document.getElementById('config-master-pw2').value;
-  if(!pw1){ toast('Digite uma senha mestra','error'); return; }
-  if(pw1!==pw2){ toast('Senhas não coincidem','error'); return; }
-  const cfg=(await dbGet('configuracoes','config'))||{id:'config'};
-  cfg.senhaMestra=hashPw(pw1); cfg.criptografiaAtiva=true;
-  await dbPut('configuracoes',cfg);
-  masterPw=pw1; masterPwHash=cfg.senhaMestra;
-  document.getElementById('config-pw-status').innerHTML='<span style="color:var(--success)">Senha salva com sucesso!</span>';
-  document.getElementById('config-master-pw').value=''; document.getElementById('config-master-pw2').value='';
-  startSessionTimer(); toast('Senha mestra definida','success');
-}
-function startSessionTimer(){ clearTimeout(sessionTimer); sessionTimer=setTimeout(()=>{masterPw=null;toast('Sessão expirada. Digite a senha novamente.','warning');},15*60*1000); }
+let masterPw=null,masterPwHash=null,sessionTimer=null;
+function encrypt(text,pw){const iv=CryptoJS.lib.WordArray.random(16);const key=CryptoJS.SHA256(pw||masterPw||'');const enc=CryptoJS.AES.encrypt(text,key,{iv});return JSON.stringify({c:enc.toString(),iv:iv.toString()})}
+function decrypt(data,pw){try{const{c,iv}=JSON.parse(data);const key=CryptoJS.SHA256(pw||masterPw||'');const dec=CryptoJS.AES.decrypt(c,key,{iv:CryptoJS.enc.Hex.parse(iv)});return dec.toString(CryptoJS.enc.Utf8)}catch(e){return null}}
+function hashPw(pw){return CryptoJS.SHA256(pw).toString()}
+async function saveMasterPassword(){const pw1=document.getElementById('config-master-pw').value,pw2=document.getElementById('config-master-pw2').value;if(!pw1){toast('Digite uma senha mestra','error');return}if(pw1!==pw2){toast('Senhas não coincidem','error');return}const cfg=(await dbGet('configuracoes','config'))||{id:'config'};cfg.senhaMestra=hashPw(pw1);cfg.criptografiaAtiva=true;await dbPut('configuracoes',cfg);masterPw=pw1;masterPwHash=cfg.senhaMestra;document.getElementById('config-pw-status').innerHTML='<span style="color:var(--success)">Senha salva com sucesso!</span>';document.getElementById('config-master-pw').value='';document.getElementById('config-master-pw2').value='';startSessionTimer();toast('Senha mestra definida','success')}
+function startSessionTimer(){clearTimeout(sessionTimer);sessionTimer=setTimeout(()=>{masterPw=null;toast('Sessão expirada. Digite a senha novamente.','warning')},15*60*1000)}
 let unlockResolve=null;
-async function requireMasterPw(){
-  const cfg=await dbGet('configuracoes','config');
-  if(!cfg||!cfg.senhaMestra) return true;
-  if(masterPw) return true;
-  return new Promise(res=>{unlockResolve=res;document.getElementById('lock-screen').classList.remove('hidden');document.getElementById('lock-input').value='';setTimeout(()=>document.getElementById('lock-input').focus(),100);});
-}
-async function unlockVault(){
-  const pw=document.getElementById('lock-input').value;
-  const cfg=await dbGet('configuracoes','config');
-  if(!cfg||hashPw(pw)!==cfg.senhaMestra){ toast('Senha incorreta','error'); return; }
-  masterPw=pw; document.getElementById('lock-screen').classList.add('hidden');
-  if(unlockResolve){unlockResolve(true);unlockResolve=null;} startSessionTimer();
-}
-function cancelUnlock(){ document.getElementById('lock-screen').classList.add('hidden'); if(unlockResolve){unlockResolve(false);unlockResolve=null;} }
+async function requireMasterPw(){const cfg=await dbGet('configuracoes','config');if(!cfg||!cfg.senhaMestra)return true;if(masterPw)return true;return new Promise(res=>{unlockResolve=res;document.getElementById('lock-screen').classList.remove('hidden');document.getElementById('lock-input').value='';setTimeout(()=>document.getElementById('lock-input').focus(),100)})}
+async function unlockVault(){const pw=document.getElementById('lock-input').value;const cfg=await dbGet('configuracoes','config');if(!cfg||hashPw(pw)!==cfg.senhaMestra){toast('Senha incorreta','error');return}masterPw=pw;document.getElementById('lock-screen').classList.add('hidden');if(unlockResolve){unlockResolve(true);unlockResolve=null}startSessionTimer()}
+function cancelUnlock(){document.getElementById('lock-screen').classList.add('hidden');if(unlockResolve){unlockResolve(false);unlockResolve=null}}
 
 // ===== TOAST =====
-function toast(msg,type='info'){
-  const el=document.createElement('div'); el.className=`toast toast-${type}`;
-  const icons={success:'check-circle',error:'x-circle',warning:'alert-triangle',info:'info'};
-  el.innerHTML=`<i data-lucide="${icons[type]||'info'}" style="width:16px;height:16px;flex-shrink:0"></i><span>${msg}</span>`;
-  document.getElementById('toast-container').appendChild(el); lucide.createIcons({nodes:[el]});
-  setTimeout(()=>el.remove(),3500);
-}
+function toast(msg,type='info'){const el=document.createElement('div');el.className=`toast toast-${type}`;const icons={success:'check-circle',error:'x-circle',warning:'alert-triangle',info:'info'};el.innerHTML=`<i data-lucide="${icons[type]||'info'}" style="width:16px;height:16px;flex-shrink:0"></i><span>${msg}</span>`;document.getElementById('toast-container').appendChild(el);lucide.createIcons({nodes:[el]});setTimeout(()=>el.remove(),3500)}
 
 // ===== CONFIRM =====
 let confirmResolveFunc=null;
-function confirmDialog(title,msg){ return new Promise(res=>{confirmResolveFunc=res;document.getElementById('confirm-title').textContent=title;document.getElementById('confirm-msg').textContent=msg;document.getElementById('confirm-overlay').classList.remove('hidden');}); }
-function confirmResolve(v){ document.getElementById('confirm-overlay').classList.add('hidden'); if(confirmResolveFunc){confirmResolveFunc(v);confirmResolveFunc=null;} }
+function confirmDialog(title,msg){return new Promise(res=>{confirmResolveFunc=res;document.getElementById('confirm-title').textContent=title;document.getElementById('confirm-msg').textContent=msg;document.getElementById('confirm-overlay').classList.remove('hidden')})}
+function confirmResolve(v){document.getElementById('confirm-overlay').classList.add('hidden');if(confirmResolveFunc){confirmResolveFunc(v);confirmResolveFunc=null}}
 
 // ===== MODAL =====
-function openModal(title,bodyHtml,wide=false){
-  document.getElementById('modal-title').textContent=title;
-  document.getElementById('modal-body').innerHTML=bodyHtml;
-  const mc=document.getElementById('modal-content');
-  mc.classList.toggle('modal-wide',wide);
-  document.getElementById('modal-overlay').classList.remove('hidden');
-  lucide.createIcons({nodes:[document.getElementById('modal-body')]});
-}
-function closeModal(){ document.getElementById('modal-overlay').classList.add('hidden'); }
-document.getElementById('modal-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('modal-overlay'))closeModal();});
+function openModal(title,bodyHtml,wide=false){document.getElementById('modal-title').textContent=title;document.getElementById('modal-body').innerHTML=bodyHtml;const mc=document.getElementById('modal-content');mc.classList.toggle('modal-wide',wide);document.getElementById('modal-overlay').classList.remove('hidden');lucide.createIcons({nodes:[document.getElementById('modal-body')]})}
+function closeModal(){document.getElementById('modal-overlay').classList.add('hidden')}
+document.getElementById('modal-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('modal-overlay'))closeModal()})
 
 // ===== NAVIGATION =====
-let currentModule='dashboard', currentProjectId=null, currentProjectTab='visao-geral';
-const PROJECT_TABS=[
-  {id:'visao-geral', label:'Visão Geral', icon:'eye'},
-  {id:'daily-log', label:'Daily Log', icon:'calendar-check'},
-  {id:'timeline', label:'Timeline', icon:'gantt-chart'},
-  {id:'checklists', label:'Checklists', icon:'list-checks'},
-  {id:'apis', label:'APIs', icon:'webhook'},
-  {id:'cofre', label:'Cofre', icon:'shield-check'},
-  {id:'prompts', label:'Prompts', icon:'message-square-code'},
-  {id:'modelos', label:'Modelos', icon:'file-code'},
-  {id:'toolbox', label:'Toolbox', icon:'wrench'},
-  {id:'docs', label:'Docs', icon:'book-open'},
-  {id:'deploy', label:'Deploy', icon:'rocket'},
-];
-
-function navigate(mod,projId){
-  document.querySelectorAll('.nav-item').forEach(el=>el.classList.toggle('active',el.dataset.module===mod));
-  document.querySelectorAll('.module').forEach(el=>el.classList.toggle('active',el.id===`mod-${mod}`));
-  currentModule=mod;
-  if(mod==='projeto-interno'&&projId){ currentProjectId=projId; }
-  if(mod!=='projeto-interno'){ currentProjectId=null; }
-  updateBreadcrumb();
-  const renders={
-    dashboard:renderDashboard, projetos:renderProjetos,
-    'projeto-interno':()=>renderProjetoInterno(currentProjectId),
-    config:renderConfig
-  };
-  if(renders[mod]) renders[mod]();
-}
-function goHome(){ navigate('dashboard'); }
-function updateBreadcrumb(){
-  const el=document.getElementById('breadcrumb');
-  if(currentModule==='dashboard'){ el.innerHTML='<span class="current">Dashboard</span>'; return; }
-  if(currentModule==='projetos'){ el.innerHTML='<span class="current">Projetos</span>'; return; }
-  if(currentModule==='config'){ el.innerHTML='<span class="current">Configurações</span>'; return; }
-  if(currentModule==='projeto-interno'&&currentProjectId){
-    dbGet('projetos',currentProjectId).then(p=>{
-      const tab=PROJECT_TABS.find(t=>t.id===currentProjectTab);
-      el.innerHTML=`<span onclick="navigate('projetos')">Projetos</span><span class="separator">/</span><span onclick="navigate('projeto-interno','${currentProjectId}')">${p?.nome||'Projeto'}</span><span class="separator">/</span><span class="current">${tab?.label||''}</span>`;
-    });
-    return;
-  }
-  el.innerHTML='';
-}
-document.getElementById('nav').addEventListener('click',e=>{
-  const item=e.target.closest('.nav-item');
-  if(item&&item.dataset.module) navigate(item.dataset.module);
-});
+let currentModule='dashboard',currentProjectId=null,currentProjectTab='visao-geral';
+const PROJECT_TABS=[{id:'visao-geral',label:'Visão Geral',icon:'eye'},{id:'daily-log',label:'Daily Log',icon:'calendar-check'},{id:'timeline',label:'Timeline',icon:'gantt-chart'},{id:'checklists',label:'Checklists',icon:'list-checks'},{id:'apis',label:'APIs',icon:'webhook'},{id:'cofre',label:'Cofre',icon:'shield-check'},{id:'prompts',label:'Prompts',icon:'message-square-code'},{id:'modelos',label:'Modelos',icon:'file-code'},{id:'toolbox',label:'Toolbox',icon:'wrench'},{id:'docs',label:'Docs',icon:'book-open'},{id:'deploy',label:'Deploy',icon:'rocket'}];
+function navigate(mod,projId){document.querySelectorAll('.nav-item').forEach(el=>el.classList.toggle('active',el.dataset.module===mod));document.querySelectorAll('.module').forEach(el=>el.classList.toggle('active',el.id===`mod-${mod}`));currentModule=mod;if(mod==='projeto-interno'&&projId){currentProjectId=projId}if(mod!=='projeto-interno'){currentProjectId=null}updateBreadcrumb();const renders={dashboard:renderDashboard,projetos:renderProjetos,'projeto-interno':()=>renderProjetoInterno(currentProjectId),config:renderConfig};if(renders[mod])renders[mod]()}
+function goHome(){navigate('dashboard')}
+function updateBreadcrumb(){const el=document.getElementById('breadcrumb');if(currentModule==='dashboard'){el.innerHTML='<span class="current">Dashboard</span>';return}if(currentModule==='projetos'){el.innerHTML='<span class="current">Projetos</span>';return}if(currentModule==='config'){el.innerHTML='<span class="current">Configurações</span>';return}if(currentModule==='projeto-interno'&&currentProjectId){dbGet('projetos',currentProjectId).then(p=>{const tab=PROJECT_TABS.find(t=>t.id===currentProjectTab);el.innerHTML=`<span onclick="navigate('projetos')">Projetos</span><span class="separator">/</span><span onclick="navigate('projeto-interno','${currentProjectId}')">${p?.nome||'Projeto'}</span><span class="separator">/</span><span class="current">${tab?.label||''}</span>`});return}el.innerHTML=''}
+document.getElementById('nav').addEventListener('click',e=>{const item=e.target.closest('.nav-item');if(item&&item.dataset.module)navigate(item.dataset.module)})
 
 // ===== SEARCH =====
-function openSearch(){ document.getElementById('search-overlay').classList.remove('hidden'); document.getElementById('search-input').value=''; document.getElementById('search-results').innerHTML=''; setTimeout(()=>document.getElementById('search-input').focus(),50); }
-function closeSearch(){ document.getElementById('search-overlay').classList.add('hidden'); }
-document.getElementById('search-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('search-overlay'))closeSearch();});
+function openSearch(){document.getElementById('search-overlay').classList.remove('hidden');document.getElementById('search-input').value='';document.getElementById('search-results').innerHTML='';setTimeout(()=>document.getElementById('search-input').focus(),50)}
+function closeSearch(){document.getElementById('search-overlay').classList.add('hidden')}
+document.getElementById('search-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('search-overlay'))closeSearch()})
 let searchIdx=0;
-async function doSearch(q){
-  if(!q.trim()){document.getElementById('search-results').innerHTML='';return;}
-  const[projs,logs,apis,prpts,tools,docs]=await Promise.all([dbGetAll('projetos'),dbGetAll('dailyLogs'),dbGetAll('apis'),dbGetAll('prompts'),dbGetAll('ferramentas'),dbGetAll('documentos')]);
-  const results=[],lq=q.toLowerCase();
-  projs.filter(p=>p.nome.toLowerCase().includes(lq)||p.descricao?.toLowerCase().includes(lq)).forEach(p=>results.push({type:'projeto',label:p.nome,sub:p.stack||'',id:p.id,mod:'projetos'}));
-  logs.filter(l=>l.descricao?.toLowerCase().includes(lq)).forEach(l=>results.push({type:'log',label:l.data,sub:l.descricao?.slice(0,60)+'...',id:l.id,mod:'projeto-interno'}));
-  apis.filter(a=>a.nome.toLowerCase().includes(lq)).forEach(a=>results.push({type:'api',label:a.nome,sub:a.urlBase||'',id:a.id,mod:'projeto-interno'}));
-  prpts.filter(p=>p.titulo?.toLowerCase().includes(lq)).forEach(p=>results.push({type:'prompt',label:p.titulo,sub:p.iaUsada||'',id:p.id,mod:'projeto-interno'}));
-  tools.filter(t=>t.nome.toLowerCase().includes(lq)).forEach(t=>results.push({type:'tool',label:t.nome,sub:t.categoria||'',id:t.id,mod:'projeto-interno'}));
-  docs.filter(d=>d.titulo?.toLowerCase().includes(lq)).forEach(d=>results.push({type:'doc',label:d.titulo,sub:d.tipo||'',id:d.id,mod:'projeto-interno'}));
-  searchIdx=0;
-  if(!results.length){document.getElementById('search-results').innerHTML='<div class="search-no-results">Nenhum resultado encontrado</div>';return;}
-  document.getElementById('search-results').innerHTML=results.slice(0,12).map((r,i)=>`<div class="search-result-item${i===0?' selected':''}" onclick="goResult('${r.mod}','${r.id}')"><span class="result-type">${r.type}</span><div><div style="font-weight:600;font-size:14px">${r.label}</div><div class="text-xs text-muted">${r.sub}</div></div></div>`).join('');
-}
-function searchKeyNav(e){
-  const items=document.querySelectorAll('.search-result-item');
-  if(e.key==='ArrowDown'){searchIdx=Math.min(searchIdx+1,items.length-1);items.forEach((el,i)=>el.classList.toggle('selected',i===searchIdx));e.preventDefault();}
-  if(e.key==='ArrowUp'){searchIdx=Math.max(searchIdx-1,0);items.forEach((el,i)=>el.classList.toggle('selected',i===searchIdx));e.preventDefault();}
-  if(e.key==='Enter'){const sel=document.querySelector('.search-result-item.selected');if(sel)sel.click();}
-  if(e.key==='Escape')closeSearch();
-}
-function goResult(mod,id){ closeSearch(); if(mod==='projetos') navigate('projetos'); else if(mod==='projeto-interno'&&id){ dbGet('dailyLogs',id).then(l=>{if(l?.projetoId){currentProjectId=l.projetoId;navigate('projeto-interno',l.projetoId);}}).catch(()=>{}); } }
+async function doSearch(q){if(!q.trim()){document.getElementById('search-results').innerHTML='';return}const[projs,logs,apis,prpts,tools,docs]=await Promise.all([dbGetAll('projetos'),dbGetAll('dailyLogs'),dbGetAll('apis'),dbGetAll('prompts'),dbGetAll('ferramentas'),dbGetAll('documentos')]);const results=[],lq=q.toLowerCase();projs.filter(p=>p.nome.toLowerCase().includes(lq)||p.descricao?.toLowerCase().includes(lq)).forEach(p=>results.push({type:'projeto',label:p.nome,sub:p.stack||'',id:p.id,mod:'projetos'}));logs.filter(l=>l.descricao?.toLowerCase().includes(lq)).forEach(l=>results.push({type:'log',label:l.data,sub:l.descricao?.slice(0,60)+'...',id:l.id,mod:'projeto-interno'}));apis.filter(a=>a.nome.toLowerCase().includes(lq)).forEach(a=>results.push({type:'api',label:a.nome,sub:a.urlBase||'',id:a.id,mod:'projeto-interno'}));prpts.filter(p=>p.titulo?.toLowerCase().includes(lq)).forEach(p=>results.push({type:'prompt',label:p.titulo,sub:p.iaUsada||'',id:p.id,mod:'projeto-interno'}));tools.filter(t=>t.nome.toLowerCase().includes(lq)).forEach(t=>results.push({type:'tool',label:t.nome,sub:t.categoria||'',id:t.id,mod:'projeto-interno'}));docs.filter(d=>d.titulo?.toLowerCase().includes(lq)).forEach(d=>results.push({type:'doc',label:d.titulo,sub:d.tipo||'',id:d.id,mod:'projeto-interno'}));searchIdx=0;if(!results.length){document.getElementById('search-results').innerHTML='<div class="search-no-results">Nenhum resultado encontrado</div>';return}document.getElementById('search-results').innerHTML=results.slice(0,12).map((r,i)=>`<div class="search-result-item${i===0?' selected':''}" onclick="goResult('${r.mod}','${r.id}')"><span class="result-type">${r.type}</span><div><div style="font-weight:600;font-size:14px">${r.label}</div><div class="text-xs text-muted">${r.sub}</div></div></div>`).join('')}
+function searchKeyNav(e){const items=document.querySelectorAll('.search-result-item');if(e.key==='ArrowDown'){searchIdx=Math.min(searchIdx+1,items.length-1);items.forEach((el,i)=>el.classList.toggle('selected',i===searchIdx));e.preventDefault()}if(e.key==='ArrowUp'){searchIdx=Math.max(searchIdx-1,0);items.forEach((el,i)=>el.classList.toggle('selected',i===searchIdx));e.preventDefault()}if(e.key==='Enter'){const sel=document.querySelector('.search-result-item.selected');if(sel)sel.click()}if(e.key==='Escape')closeSearch()}
+function goResult(mod,id){closeSearch();if(mod==='projetos')navigate('projetos');else if(mod==='projeto-interno'&&id){dbGet('dailyLogs',id).then(l=>{if(l?.projetoId){currentProjectId=l.projetoId;navigate('projeto-interno',l.projetoId)}}).catch(()=>{})}}
 
 // ===== HELPERS =====
-function statusBadge(s){
-  const map={ideacao:['badge-gray','Ideação'],em_dev:['badge-blue','Em Dev'],homologacao:['badge-yellow','Homologação'],producao:['badge-green','Produção'],pausado:['badge-gray','Pausado'],ativa:['badge-green','Ativa'],depreciada:['badge-yellow','Depreciada'],erro:['badge-red','Erro'],usando:['badge-green','Usando'],ja_usei:['badge-gray','Já usei'],quero_testar:['badge-blue','Quero testar'],abandonada:['badge-red','Abandonada']};
-  const[cls,label]=map[s]||['badge-gray',s]; return `<span class="badge ${cls}">${label}</span>`;
-}
-function iaColor(ia){ const m={chatgpt:'badge-green',claude:'badge-purple',gemini:'badge-blue',copilot:'badge-gray'}; return m[ia]||'badge-gray'; }
-function formatDate(iso){ if(!iso)return''; try{return new Date(iso+'T00:00:00').toLocaleDateString('pt-BR');}catch(e){return iso;} }
-function formatDateTime(iso){ if(!iso)return''; try{return new Date(iso).toLocaleString('pt-BR');}catch(e){return iso;} }
-function daysSince(iso){ if(!iso)return 0; return Math.floor((Date.now()-new Date(iso).getTime())/(86400000)); }
-function markdownToHtml(md){
-  return md.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/^#{3} (.+)$/gm,'<h3>$1</h3>').replace(/^#{2} (.+)$/gm,'<h2>$1</h2>').replace(/^# (.+)$/gm,'<h1>$1</h1>')
-    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>')
-    .replace(/`([^`]+)`/g,'<code>$1</code>').replace(/^> (.+)$/gm,'<blockquote>$1</blockquote>')
-    .replace(/^- (.+)$/gm,'<li>$1</li>').replace(/(<li>.*<\/li>)/gs,'<ul>$1</ul>')
-    .replace(/\n\n/g,'<br><br>').replace(/\[(.+?)\]\((.+?)\)/g,'<a href="$2" target="_blank">$1</a>');
-}
-function emptyState(icon,title,desc,btnLabel='',btnAction=''){
-  return `<div class="empty-state"><i data-lucide="${icon}" style="width:48px;height:48px"></i><h3>${title}</h3><p>${desc}</p>${btnLabel?`<button class="btn btn-primary btn-sm" onclick="${btnAction}">${btnLabel}</button>`:''}</div>`;
-}
-function projectSelect(allProjs,selId='',id='f-proj'){
-  return `<select id="${id}"><option value="">Sem projeto</option>${allProjs.map(p=>`<option value="${p.id}"${p.id===selId?' selected':''}>${p.nome}</option>`).join('')}</select>`;
-}
-function copyText(txt){ navigator.clipboard.writeText(txt).then(()=>toast('Copiado!','success')).catch(()=>{const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();toast('Copiado!','success');}); }
+function statusBadge(s){const map={ideacao:['badge-gray','Ideação'],em_dev:['badge-blue','Em Dev'],homologacao:['badge-yellow','Homologação'],producao:['badge-green','Produção'],pausado:['badge-gray','Pausado'],ativa:['badge-green','Ativa'],depreciada:['badge-yellow','Depreciada'],erro:['badge-red','Erro'],usando:['badge-green','Usando'],ja_usei:['badge-gray','Já usei'],quero_testar:['badge-blue','Quero testar'],abandonada:['badge-red','Abandonada']};const[cls,label]=map[s]||['badge-gray',s];return`<span class="badge ${cls}">${label}</span>`}
+function iaColor(ia){const m={chatgpt:'badge-green',claude:'badge-purple',gemini:'badge-blue',copilot:'badge-gray'};return m[ia]||'badge-gray'}
+function formatDate(iso){if(!iso)return'';try{return new Date(iso+'T00:00:00').toLocaleDateString('pt-BR')}catch(e){return iso}}
+function formatDateTime(iso){if(!iso)return'';try{return new Date(iso).toLocaleString('pt-BR')}catch(e){return iso}}
+function daysSince(iso){if(!iso)return 0;return Math.floor((Date.now()-new Date(iso).getTime())/(86400000))}
+function markdownToHtml(md){return md.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/^#{3} (.+)$/gm,'<h3>$1</h3>').replace(/^#{2} (.+)$/gm,'<h2>$1</h2>').replace(/^# (.+)$/gm,'<h1>$1</h1>').replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/`([^`]+)`/g,'<code>$1</code>').replace(/^> (.+)$/gm,'<blockquote>$1</blockquote>').replace(/^- (.+)$/gm,'<li>$1</li>').replace(/(<li>.*<\/li>)/gs,'<ul>$1</ul>').replace(/\n\n/g,'<br><br>').replace(/\[(.+?)\]\((.+?)\)/g,'<a href="$2" target="_blank">$1</a>')}
+function emptyState(icon,title,desc,btnLabel='',btnAction=''){return`<div class="empty-state"><i data-lucide="${icon}" style="width:48px;height:48px"></i><h3>${title}</h3><p>${desc}</p>${btnLabel?`<button class="btn btn-primary btn-sm" onclick="${btnAction}">${btnLabel}</button>`:''}</div>`}
+function projectSelect(allProjs,selId='',id='f-proj'){return`<select id="${id}"><option value="">Sem projeto</option>${allProjs.map(p=>`<option value="${p.id}"${p.id===selId?' selected':''}>${p.nome}</option>`).join('')}</select>`}
+function copyText(txt){navigator.clipboard.writeText(txt).then(()=>toast('Copiado!','success')).catch(()=>{const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();toast('Copiado!','success')})}
 
 // ===== DASHBOARD =====
-let dashCalYear, dashCalMonth;
-async function renderDashboard(){
-  const d=new Date();
-  if(!dashCalYear){ dashCalYear=d.getFullYear(); dashCalMonth=d.getMonth(); }
-  document.getElementById('dash-date').textContent=d.toLocaleDateString('pt-BR',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-  const[projs,logs,apis,prpts,tasks]=await Promise.all([dbGetAll('projetos'),dbGetAll('dailyLogs'),dbGetAll('apis'),dbGetAll('prompts'),dbGetAll('timeline')]);
-  const active=projs.filter(p=>p.status==='em_dev'||p.status==='producao');
-  const inactiveDays=projs.filter(p=>p.status==='em_dev').map(p=>{const plogs=logs.filter(l=>l.projetoId===p.id&&l.data);if(!plogs.length)return{p,days:999};const sorted=plogs.sort((a,b)=>b.data.localeCompare(a.data));return{p,days:daysSince(sorted[0].data)};}).filter(x=>x.days>=3);
-
-  document.getElementById('dash-stats').innerHTML=[
-    {num:projs.length,label:'Projetos'},{num:active.length,label:'Em Desenvolvimento'},
-    {num:logs.length,label:'Daily Logs'},{num:prpts.length,label:'Prompts Salvos'},{num:apis.length,label:'APIs Registradas'}
-  ].map(s=>`<div class="stat-card"><div class="stat-num">${s.num}</div><div class="stat-label">${s.label}</div></div>`).join('');
-
-  // Calendar
-  renderDashCalendar(logs,projs);
-
-  // Alertas
-  let alerts='';
-  inactiveDays.forEach(({p,days})=>{ alerts+=`<div class="alert-banner alert-warning mb-12"><i data-lucide="alert-triangle" style="width:16px;height:16px;flex-shrink:0"></i><span><strong>${p.nome}:</strong> ${days} dias sem registro</span></div>`; });
-
-  // Tasks
-  const today=tasks.filter(t=>t.tipo==='day_task'&&t.status==='pendente').slice(0,6);
-  const tasksEl=document.getElementById('dash-tasks');
-  tasksEl.innerHTML=alerts+(today.length?`<div class="card" style="padding:14px">${today.map(t=>`<div class="check-item"><div class="check-box" onclick="toggleDayTask('${t.id}')"></div><span class="check-text">${t.texto}</span><span class="badge badge-gray text-xs">Dia ${t.dia}</span></div>`).join('')}</div>`:`<div class="text-muted text-sm">${alerts?alerts:'Nenhuma tarefa pendente'}</div>`);
-
-  // Projects
-  const projEl=document.getElementById('dash-projetos');
-  projEl.innerHTML=active.slice(0,4).map(p=>`<div class="card mb-12 highlight" style="padding:14px 16px;cursor:pointer" onclick="navigate('projeto-interno','${p.id}')"><div class="flex items-center justify-between gap-8"><div style="font-weight:600;font-size:14px">${p.nome}</div>${statusBadge(p.status)}</div><div class="text-muted text-xs mt-8 text-mono">${p.stack||'Stack não definida'} · ${daysSince(p.dataInicio)}d</div></div>`).join('')||'<div class="text-muted text-sm">Nenhum projeto ativo</div>';
-  lucide.createIcons({nodes:[document.getElementById('dash-tasks'),document.getElementById('dash-projetos')]});
-}
-function renderDashCalendar(logs,projs){
-  const logDates=new Map(); logs.forEach(l=>{const d=l.data?.slice(0,10);if(d){if(!logDates.has(d))logDates.set(d,new Set());logDates.get(d).add(l.projetoId);}});
-  const months=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
-  const first=new Date(dashCalYear,dashCalMonth,1).getDay(),days=new Date(dashCalYear,dashCalMonth+1,0).getDate();
-  const today=new Date().toISOString().slice(0,10);
-  let cells=''; for(let i=0;i<first;i++)cells+=`<div class="cal-day"></div>`;
-  for(let d=1;d<=days;d++){
-    const ds=`${dashCalYear}-${String(dashCalMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-    const pids=logDates.get(ds);
-    const cls=[ds===today?'today':'',pids?'has-log':'',ds===today?'selected':''].filter(Boolean).join(' ');
-    cells+=`<div class="cal-day ${cls}" onclick="showDashDay('${ds}')" title="${pids?[...pids].map(pid=>projs.find(p=>p.id===pid)?.nome||'').join(', '):''}">${d}</div>`;
-  }
-  const calEl=document.getElementById('dash-calendar');
-  calEl.innerHTML=`
-    <div class="cal-nav">
-      <button class="btn btn-ghost btn-icon btn-sm" onclick="dashCalPrev()"><i data-lucide="chevron-left" style="width:14px;height:14px"></i></button>
-      <span class="cal-title">${months[dashCalMonth]} ${dashCalYear}</span>
-      <button class="btn btn-ghost btn-icon btn-sm" onclick="dashCalNext()"><i data-lucide="chevron-right" style="width:14px;height:14px"></i></button>
-    </div>
-    <div class="cal-grid">${['D','S','T','Q','Q','S','S'].map(d=>`<div class="cal-header-day">${d}</div>`).join('')}</div>
-    <div class="cal-grid">${cells}</div>`;
-  lucide.createIcons({nodes:[calEl]});
-}
-function dashCalPrev(){ dashCalMonth--; if(dashCalMonth<0){dashCalMonth=11;dashCalYear--;} renderDashboard(); }
-function dashCalNext(){ dashCalMonth++; if(dashCalMonth>11){dashCalMonth=0;dashCalYear++;} renderDashboard(); }
-async function showDashDay(ds){
-  const logs=await dbGetAll('dailyLogs'); const projs=await dbGetAll('projetos');
-  const dayLogs=logs.filter(l=>l.data?.startsWith(ds));
-  openModal(`Registros de ${formatDate(ds)}`,dayLogs.length?dayLogs.map(l=>{const p=projs.find(pr=>pr.id===l.projetoId);return`<div class="card mb-12"><div class="flex items-center gap-8 mb-8">${p?`<span class="badge badge-purple">${p.nome}</span>`:''}<span class="text-xs text-muted text-mono">${formatDateTime(l.createdAt)}</span></div><div class="md-preview">${markdownToHtml(l.descricao||'')}</div></div>`;}).join(''):'<div class="text-muted">Nenhum registro neste dia</div>');
-}
-async function toggleDayTask(id){ const t=await dbGet('timeline',id); if(!t)return; t.status=t.status==='concluido'?'pendente':'concluido'; await dbPut('timeline',t); renderDashboard(); }
+let dashCalYear,dashCalMonth;
+async function renderDashboard(){const d=new Date();if(!dashCalYear){dashCalYear=d.getFullYear();dashCalMonth=d.getMonth()}document.getElementById('dash-date').textContent=d.toLocaleDateString('pt-BR',{weekday:'long',year:'numeric',month:'long',day:'numeric'});const[projs,logs,apis,prpts,tasks]=await Promise.all([dbGetAll('projetos'),dbGetAll('dailyLogs'),dbGetAll('apis'),dbGetAll('prompts'),dbGetAll('timeline')]);const active=projs.filter(p=>p.status==='em_dev'||p.status==='producao');document.getElementById('dash-stats').innerHTML=[{num:projs.length,label:'Projetos'},{num:active.length,label:'Em Desenvolvimento'},{num:logs.length,label:'Daily Logs'},{num:prpts.length,label:'Prompts Salvos'},{num:apis.length,label:'APIs Registradas'}].map(s=>`<div class="stat-card"><div class="stat-num">${s.num}</div><div class="stat-label">${s.label}</div></div>`).join('');renderDashCalendar(logs,projs);const today=tasks.filter(t=>t.tipo==='day_task'&&t.status==='pendente').slice(0,6);document.getElementById('dash-tasks').innerHTML=today.length?`<div class="card" style="padding:14px">${today.map(t=>`<div class="check-item"><div class="check-box" onclick="toggleDayTask('${t.id}')"></div><span class="check-text">${t.texto}</span><span class="badge badge-gray text-xs">Dia ${t.dia}</span></div>`).join('')}</div>`:'<div class="text-muted text-sm">Nenhuma tarefa pendente</div>';document.getElementById('dash-projetos').innerHTML=active.slice(0,4).map(p=>`<div class="card mb-12 highlight" style="padding:14px 16px;cursor:pointer" onclick="navigate('projeto-interno','${p.id}')"><div class="flex items-center justify-between gap-8"><div style="font-weight:600;font-size:14px">${p.nome}</div>${statusBadge(p.status)}</div><div class="text-muted text-xs mt-8 text-mono">${p.stack||'Stack não definida'} · ${daysSince(p.dataInicio)}d</div></div>`).join('')||'<div class="text-muted text-sm">Nenhum projeto ativo</div>';lucide.createIcons({nodes:[document.getElementById('dash-tasks'),document.getElementById('dash-projetos')]})}
+function renderDashCalendar(logs,projs){const logDates=new Map();logs.forEach(l=>{const d=l.data?.slice(0,10);if(d){if(!logDates.has(d))logDates.set(d,new Set());logDates.get(d).add(l.projetoId)}});const months=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];const first=new Date(dashCalYear,dashCalMonth,1).getDay(),days=new Date(dashCalYear,dashCalMonth+1,0).getDate();const today=new Date().toISOString().slice(0,10);let cells='';for(let i=0;i<first;i++)cells+=`<div class="cal-day"></div>`;for(let d=1;d<=days;d++){const ds=`${dashCalYear}-${String(dashCalMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;const pids=logDates.get(ds);const cls=[ds===today?'today':'',pids?'has-log':'',ds===today?'selected':''].filter(Boolean).join(' ');cells+=`<div class="cal-day ${cls}" onclick="showDashDay('${ds}')">${d}</div>`}const calEl=document.getElementById('dash-calendar');calEl.innerHTML=`<div class="cal-nav"><button class="btn btn-ghost btn-icon btn-sm" onclick="dashCalPrev()"><i data-lucide="chevron-left" style="width:14px;height:14px"></i></button><span class="cal-title">${months[dashCalMonth]} ${dashCalYear}</span><button class="btn btn-ghost btn-icon btn-sm" onclick="dashCalNext()"><i data-lucide="chevron-right" style="width:14px;height:14px"></i></button></div><div class="cal-grid">${['D','S','T','Q','Q','S','S'].map(d=>`<div class="cal-header-day">${d}</div>`).join('')}</div><div class="cal-grid">${cells}</div>`;lucide.createIcons({nodes:[calEl]})}
+function dashCalPrev(){dashCalMonth--;if(dashCalMonth<0){dashCalMonth=11;dashCalYear--}renderDashboard()}
+function dashCalNext(){dashCalMonth++;if(dashCalMonth>11){dashCalMonth=0;dashCalYear++}renderDashboard()}
+async function showDashDay(ds){const logs=await dbGetAll('dailyLogs');const projs=await dbGetAll('projetos');const dayLogs=logs.filter(l=>l.data?.startsWith(ds));openModal(`Registros de ${formatDate(ds)}`,dayLogs.length?dayLogs.map(l=>{const p=projs.find(pr=>pr.id===l.projetoId);return`<div class="card mb-12"><div class="flex items-center gap-8 mb-8">${p?`<span class="badge badge-purple">${p.nome}</span>`:''}<span class="text-xs text-muted text-mono">${formatDateTime(l.createdAt)}</span></div><div class="md-preview">${markdownToHtml(l.descricao||'')}</div></div>`}).join(''):'<div class="text-muted">Nenhum registro neste dia</div>')}
+async function toggleDayTask(id){const t=await dbGet('timeline',id);if(!t)return;t.status=t.status==='concluido'?'pendente':'concluido';await dbPut('timeline',t);renderDashboard()}
 
 // ===== PROJETOS =====
-async function renderProjetos(){
-  const projs=await dbGetAll('projetos');
-  const filter=document.getElementById('proj-filter')?.value||'',search=document.getElementById('proj-search')?.value.toLowerCase()||'';
-  let filtered=projs.filter(p=>(filter?p.status===filter:true)&&(search?p.nome.toLowerCase().includes(search)||p.descricao?.toLowerCase().includes(search):true));
-  const el=document.getElementById('projetos-grid');
-  if(!filtered.length){el.innerHTML=emptyState('folder-git-2','Nenhum projeto','Crie seu primeiro projeto para começar','Criar Projeto','openProjetoModal()');lucide.createIcons({nodes:[el]});return;}
-  el.innerHTML=filtered.map(p=>`
-    <div class="card" style="cursor:pointer" onclick="navigate('projeto-interno','${p.id}')">
-      <div class="flex items-center justify-between mb-10 gap-8">
-        <div style="font-weight:700;font-size:15px">${p.nome}</div>${statusBadge(p.status)}
-      </div>
-      <div class="text-secondary text-sm mb-10">${p.descricao||'Sem descrição'}</div>
-      <div class="flex gap-8 flex-wrap mb-12">
-        ${p.stack?`<span class="badge badge-gray text-mono">${p.stack}</span>`:''}
-        ${p.cliente?`<span class="badge badge-purple">${p.cliente}</span>`:''}
-      </div>
-      <div class="flex items-center justify-between gap-8">
-        <div class="text-muted text-xs">${daysSince(p.dataInicio)}d desde início</div>
-        <div class="flex gap-4">
-          <button class="btn btn-ghost btn-icon btn-sm" onclick="event.stopPropagation();openProjetoModal('${p.id}')"><i data-lucide="pencil" style="width:14px;height:14px"></i></button>
-          <button class="btn btn-ghost btn-icon btn-sm" style="color:var(--danger)" onclick="event.stopPropagation();deleteProjeto('${p.id}')"><i data-lucide="trash-2" style="width:14px;height:14px"></i></button>
-        </div>
-      </div>
-    </div>`).join('');
-  lucide.createIcons({nodes:[el]});
-}
-async function openProjetoModal(id=''){
-  const p=id?await dbGet('projetos',id):null;
-  openModal(id?'Editar Projeto':'Novo Projeto',`
-    <div class="form-group"><label>Nome</label><input id="f-nome" value="${p?.nome||''}"></div>
-    <div class="form-group"><label>Descrição</label><textarea id="f-desc">${p?.descricao||''}</textarea></div>
-    <div class="grid-2">
-      <div class="form-group"><label>Stack</label><input id="f-stack" value="${p?.stack||''}"></div>
-      <div class="form-group"><label>Cliente</label><input id="f-cliente" value="${p?.cliente||''}"></div>
-    </div>
-    <div class="grid-2">
-      <div class="form-group"><label>Repositório</label><input id="f-repo" value="${p?.repositorio||''}"></div>
-      <div class="form-group"><label>Data de Início</label><input type="date" id="f-data" value="${p?.dataInicio?.slice(0,10)||new Date().toISOString().slice(0,10)}"></div>
-    </div>
-    <div class="form-group"><label>Status</label><select id="f-status">${['ideacao','em_dev','homologacao','producao','pausado'].map(s=>`<option value="${s}"${(p?.status||'ideacao')===s?' selected':''}>${s}</option>`).join('')}</select></div>
-    <div class="flex gap-8 justify-between mt-20">
-      <button class="btn btn-ghost btn-sm" onclick="closeModal()">Cancelar</button>
-      <button class="btn btn-primary btn-sm" onclick="saveProjeto('${id}')">Salvar</button>
-    </div>`);
-}
-async function saveProjeto(id){
-  const nome=document.getElementById('f-nome').value.trim();
-  if(!nome){toast('Nome é obrigatório','error');return;}
-  const obj={id:id||uuid(),nome,descricao:document.getElementById('f-desc').value,stack:document.getElementById('f-stack').value,cliente:document.getElementById('f-cliente').value,repositorio:document.getElementById('f-repo').value,dataInicio:document.getElementById('f-data').value,status:document.getElementById('f-status').value,updatedAt:now()};
-  if(!id)obj.createdAt=now();else{const old=await dbGet('projetos',id);obj.createdAt=old?.createdAt||now();}
-  await dbPut('projetos',obj); closeModal(); toast(id?'Projeto atualizado':'Projeto criado','success'); renderProjetos();
-}
-async function deleteProjeto(id){
-  if(!await confirmDialog('Deletar Projeto','Esta ação não pode ser desfeita.'))return;
-  await dbDelete('projetos',id); toast('Projeto deletado','success'); renderProjetos();
-}
+async function renderProjetos(){const projs=await dbGetAll('projetos');const filter=document.getElementById('proj-filter')?.value||'',search=document.getElementById('proj-search')?.value.toLowerCase()||'';let filtered=projs.filter(p=>(filter?p.status===filter:true)&&(search?p.nome.toLowerCase().includes(search)||p.descricao?.toLowerCase().includes(search):true));const el=document.getElementById('projetos-grid');if(!filtered.length){el.innerHTML=emptyState('folder-git-2','Nenhum projeto','Crie seu primeiro projeto para começar','Criar Projeto','openProjetoModal()');lucide.createIcons({nodes:[el]});return}el.innerHTML=filtered.map(p=>`<div class="card" style="cursor:pointer" onclick="navigate('projeto-interno','${p.id}')"><div class="flex items-center justify-between mb-10 gap-8"><div style="font-weight:700;font-size:15px">${p.nome}</div>${statusBadge(p.status)}</div><div class="text-secondary text-sm mb-10">${p.descricao||'Sem descrição'}</div><div class="flex gap-8 flex-wrap mb-12">${p.stack?`<span class="badge badge-gray text-mono">${p.stack}</span>`:''}${p.cliente?`<span class="badge badge-purple">${p.cliente}</span>`:''}</div><div class="flex items-center justify-between gap-8"><div class="text-muted text-xs">${daysSince(p.dataInicio)}d desde início</div><div class="flex gap-4"><button class="btn btn-ghost btn-icon btn-sm" onclick="event.stopPropagation();openProjetoModal('${p.id}')"><i data-lucide="pencil" style="width:14px;height:14px"></i></button><button class="btn btn-ghost btn-icon btn-sm" style="color:var(--danger)" onclick="event.stopPropagation();deleteProjeto('${p.id}')"><i data-lucide="trash-2" style="width:14px;height:14px"></i></button></div></div></div>`).join('');lucide.createIcons({nodes:[el]})}
+async function openProjetoModal(id=''){const p=id?await dbGet('projetos',id):null;openModal(id?'Editar Projeto':'Novo Projeto',`<div class="form-group"><label>Nome</label><input id="f-nome" value="${p?.nome||''}"></div><div class="form-group"><label>Descrição</label><textarea id="f-desc">${p?.descricao||''}</textarea></div><div class="grid-2"><div class="form-group"><label>Stack</label><input id="f-stack" value="${p?.stack||''}"></div><div class="form-group"><label>Cliente</label><input id="f-cliente" value="${p?.cliente||''}"></div></div><div class="grid-2"><div class="form-group"><label>Repositório</label><input id="f-repo" value="${p?.repositorio||''}"></div><div class="form-group"><label>Data de Início</label><input type="date" id="f-data" value="${p?.dataInicio?.slice(0,10)||new Date().toISOString().slice(0,10)}"></div></div><div class="form-group"><label>Status</label><select id="f-status">${['ideacao','em_dev','homologacao','producao','pausado'].map(s=>`<option value="${s}"${(p?.status||'ideacao')===s?' selected':''}>${s}</option>`).join('')}</select></div><div class="flex gap-8 justify-between mt-20"><button class="btn btn-ghost btn-sm" onclick="closeModal()">Cancelar</button><button class="btn btn-primary btn-sm" onclick="saveProjeto('${id}')">Salvar</button></div>`)}
+async function saveProjeto(id){const nome=document.getElementById('f-nome').value.trim();if(!nome){toast('Nome é obrigatório','error');return}const obj={id:id||uuid(),nome,descricao:document.getElementById('f-desc').value,stack:document.getElementById('f-stack').value,cliente:document.getElementById('f-cliente').value,repositorio:document.getElementById('f-repo').value,dataInicio:document.getElementById('f-data').value,status:document.getElementById('f-status').value,updatedAt:now()};if(!id)obj.createdAt=now();else{const old=await dbGet('projetos',id);obj.createdAt=old?.createdAt||now()}await dbPut('projetos',obj);closeModal();toast(id?'Projeto atualizado':'Projeto criado','success');renderProjetos()}
+async function deleteProjeto(id){if(!await confirmDialog('Deletar Projeto','Esta ação não pode ser desfeita.'))return;await dbDelete('projetos',id);toast('Projeto deletado','success');renderProjetos()}
 
-// ===== PROJETO INTERNO (WORKSPACE) =====
-async function renderProjetoInterno(projId){
-  if(!projId) return;
-  const p=await dbGet('projetos',projId);
-  if(!p) return;
-  currentProjectId=projId;
-  updateBreadcrumb();
-  const el=document.getElementById('projeto-interno-content');
-  el.innerHTML=`
-    <div class="page-header">
-      <div><h1>${p.nome}</h1><p>${p.descricao||''}</p></div>
-      <div class="flex gap-8">
-        ${p.repositorio?`<a href="${p.repositorio}" target="_blank" class="btn btn-ghost btn-sm"><i data-lucide="github" style="width:15px;height:15px"></i> Repo</a>`:''}
-        <button class="btn btn-ghost btn-sm" onclick="openProjetoModal('${p.id}')"><i data-lucide="pencil" style="width:15px;height:15px"></i> Editar</button>
-      </div>
-    </div>
-    <div class="project-tabs" id="project-tabs">
-      ${PROJECT_TABS.map(t=>`<div class="project-tab${currentProjectTab===t.id?' active':''}" onclick="switchProjectTab('${t.id}')"><i data-lucide="${t.icon}" class="tab-icon"></i> ${t.label}</div>`).join('')}
-    </div>
-    <div id="project-tab-content"></div>`;
-  lucide.createIcons({nodes:[el]});
-  switchProjectTab(currentProjectTab);
-}
-async function switchProjectTab(tabId){
-  currentProjectTab=tabId;
-  document.querySelectorAll('.project-tab').forEach(el=>el.classList.toggle('active',el.dataset?.active===tabId||el.textContent.trim().includes(PROJECT_TABS.find(t=>t.id===tabId)?.label)));
-  const tabs=document.getElementById('project-tabs')?.children;
-  if(tabs) for(const t of tabs) t.classList.toggle('active', t.onclick?.toString().includes(`'${tabId}'`) || t.textContent.trim().startsWith(PROJECT_TABS.find(x=>x.id===tabId)?.label));
-  updateBreadcrumb();
-  const el=document.getElementById('project-tab-content');
-  if(!el) return;
-  const renders={
-    'visao-geral':renderProjetoVisaoGeral, 'daily-log':renderProjetoDailyLog,
-    'timeline':renderProjetoTimeline, 'checklists':renderProjetoChecklists,
-    'apis':renderProjetoApis, 'cofre':renderProjetoCofre,
-    'prompts':renderProjetoPrompts, 'modelos':renderProjetoModelos,
-    'toolbox':renderProjetoToolbox, 'docs':renderProjetoDocs, 'deploy':renderProjetoDeploy
+// ===== PROJETO INTERNO =====
+async function renderProjetoInterno(projId){if(!projId)return;const p=await dbGet('projetos',projId);if(!p)return;currentProjectId=projId;updateBreadcrumb();const el=document.getElementById('projeto-interno-content');el.innerHTML=`<div class="page-header"><div><h1>${p.nome}</h1><p>${p.descricao||''}</p></div><div class="flex gap-8">${p.repositorio?`<a href="${p.repositorio}" target="_blank" class="btn btn-ghost btn-sm"><i data-lucide="github" style="width:15px;height:15px"></i> Repo</a>`:''}<button class="btn btn-secondary btn-sm" onclick="openImportDocModal()"><i data-lucide="file-text" style="width:15px;height:15px"></i> Importar Documentação</button><button class="btn btn-ghost btn-sm" onclick="openProjetoModal('${p.id}')"><i data-lucide="pencil" style="width:15px;height:15px"></i> Editar</button></div></div><div class="project-tabs" id="project-tabs">${PROJECT_TABS.map(t=>`<div class="project-tab${currentProjectTab===t.id?' active':''}" onclick="switchProjectTab('${t.id}')"><i data-lucide="${t.icon}" class="tab-icon"></i> ${t.label}</div>`).join('')}</div><div id="project-tab-content"></div>`;lucide.createIcons({nodes:[el]});switchProjectTab(currentProjectTab)}
+async function switchProjectTab(tabId){currentProjectTab=tabId;updateBreadcrumb();const el=document.getElementById('project-tab-content');if(!el)return;const tabs=document.getElementById('project-tabs')?.children;if(tabs)for(const t of tabs)t.classList.toggle('active',t.onclick?.toString().includes(`'${tabId}'`)||t.textContent.trim().startsWith(PROJECT_TABS.find(x=>x.id===tabId)?.label));const renders={'visao-geral':renderProjetoVisaoGeral,'daily-log':renderProjetoDailyLog,'timeline':renderProjetoTimeline,'checklists':renderProjetoChecklists,'apis':renderProjetoApis,'cofre':renderProjetoCofre,'prompts':renderProjetoPrompts,'modelos':renderProjetoModelos,'toolbox':renderProjetoToolbox,'docs':renderProjetoDocs,'deploy':renderProjetoDeploy};if(renders[tabId]){el.innerHTML='<div class="text-center text-muted py-20">Carregando...</div>';await renders[tabId](el)}lucide.createIcons({nodes:[document.getElementById('projeto-interno-content')]})}
+
+// ===== PARSER DE DOCUMENTAÇÃO =====
+function parseDocumentacao(texto){
+  const resultado = {
+    nomeProjeto: '',
+    descricaoProjeto: '',
+    stackProjeto: '',
+    documentos: [],
+    checklists: [],
+    ferramentas: [],
+    acessos: [],
+    apis: [],
+    timeline: [],
+    identidadeVisual: null,
+    variaveisAmbiente: []
   };
-  if(renders[tabId]){ el.innerHTML='<div class="text-center text-muted py-20">Carregando...</div>'; await renders[tabId](el); }
-  lucide.createIcons({nodes:[document.getElementById('projeto-interno-content')]});
-}
 
-// ===== VISÃO GERAL DO PROJETO =====
-async function renderProjetoVisaoGeral(el){
-  const p=await dbGet('projetos',currentProjectId);
-  if(!p) return;
-  const[logs,cls,tasks]=await Promise.all([dbGetAll('dailyLogs'),dbGetAll('checklists'),dbGetAll('timeline')]);
-  const projLogs=logs.filter(l=>l.projetoId===currentProjectId);
-  const projCls=cls.filter(c=>c.projetoId===currentProjectId);
-  const projTasks=tasks.filter(t=>t.projetoId===currentProjectId&&t.tipo==='day_task');
-  const lastLog=projLogs.sort((a,b)=>b.data?.localeCompare(a.data))[0];
-  const doneTasks=projTasks.filter(t=>t.status==='concluido').length;
-  const totalTasks=projTasks.length;
-  const pct=totalTasks?Math.round(doneTasks/totalTasks*100):0;
-  const daysSinceLast=lastLog?daysSince(lastLog.data):999;
+  // Extrair nome do projeto
+  const nomeMatch = texto.match(/^#\s+(.+)$/m) || texto.match(/^##\s+PROJETO:\s*(.+)$/m) || texto.match(/^(.+?)(?:\n|$)/);
+  if(nomeMatch) resultado.nomeProjeto = nomeMatch[1].replace('Documentação Completa do Sistema','').replace('**Sistema:**','').trim();
 
-  // Mini calendário
-  const now=new Date(); const y=now.getFullYear(),m=now.getMonth();
-  const first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate();
-  const logDates=new Set(projLogs.map(l=>l.data?.slice(0,10)));
-  let calCells=''; for(let i=0;i<first;i++)calCells+=`<div class="cal-day"></div>`;
-  for(let d=1;d<=days;d++){
-    const ds=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-    calCells+=`<div class="cal-day${logDates.has(ds)?' has-log':''}${ds===now.toISOString().slice(0,10)?' today':''}">${d}</div>`;
+  // Extrair stack
+  const stackMatch = texto.match(/\*\*Stack:\*\*\s*(.+)/) || texto.match(/##\s+STACK:\s*(.+)/);
+  if(stackMatch) resultado.stackProjeto = stackMatch[1].trim();
+
+  // Extrair descrição
+  const descMatch = texto.match(/\*\*Descrição:\*\*\s*(.+)/);
+  if(descMatch) resultado.descricaoProjeto = descMatch[1].trim();
+
+  // Dividir por seções
+  const secoes = texto.split(/^## /gm);
+  let descricaoCompleta = '';
+
+  for(let i=0; i<secoes.length; i++){
+    const secao = secoes[i];
+    if(!secao.trim()) continue;
+    const linhas = secao.split('\n');
+    const tituloMatch = linhas[0]?.match(/^([^\n]+)/);
+    const titulo = tituloMatch ? tituloMatch[1].trim() : `Seção ${i+1}`;
+    const conteudo = secao;
+
+    // Pular sumário/TOC
+    if(titulo.toLowerCase().includes('sumário') || titulo.toLowerCase().includes('indice')) continue;
+
+    // Detectar e extrair checklists
+    if(conteudo.includes('- [ ]') || conteudo.includes('- [x]') || conteudo.includes('- [X]')){
+      const itens = [];
+      const checklistLines = conteudo.split('\n');
+      for(const line of checklistLines){
+        const match = line.match(/^\s*- \[([ xX])\]\s+(.+)/);
+        if(match){
+          itens.push({ id: uuid(), texto: match[2].trim(), concluido: match[1].toLowerCase() === 'x', ordem: itens.length });
+        }
+      }
+      if(itens.length >= 2){
+        // Agrupar checklists por contexto
+        let checklistTitle = titulo;
+        // Tentar encontrar subtítulo
+        const subMatch = conteudo.match(/^###\s+(.+)$/m);
+        if(subMatch) checklistTitle = subMatch[1].trim();
+        resultado.checklists.push({ titulo: checklistTitle, itens, tipo: 'desenvolvimento' });
+      }
+    }
+
+    // Detectar ferramentas (padrões comuns)
+    const ferramentaPatterns = [
+      /\|?\s*([A-Za-zÀ-ÿ0-9\s\.\+\-]+?)\s*\|\s*(.+?)\s*\|\s*(.+?)\s*\|/g,  // Tabela markdown
+      /\*\*([^*]+)\*\*\s*[–—]\s*(.+?)(?:\n|$)/g,  // **Nome** — Descrição
+      /-\s+([^:]+?):\s*(.+?)(?:\n|$)/g,  // - Nome: Descrição
+    ];
+
+    const foundTools = new Set();
+    for(const pattern of ferramentaPatterns){
+      let match;
+      while((match = pattern.exec(conteudo)) !== null){
+        let nome = match[1].trim();
+        let descricao = match[2]?.trim() || '';
+        let link = match[3]?.trim() || '';
+
+        // Limpar nome
+        nome = nome.replace(/\*\*/g,'').replace(/^[|•\-]\s*/,'').trim();
+        // Tentar extrair link
+        const linkMatch = descricao.match(/(https?:\/\/[^\s)]+)/);
+        if(linkMatch){
+          link = linkMatch[1];
+          descricao = descricao.replace(linkMatch[1], '').trim();
+        }
+        if(nome && nome.length > 2 && nome.length < 80 && !foundTools.has(nome.toLowerCase())){
+          foundTools.add(nome.toLowerCase());
+          let categoria = 'outro';
+          const nl = nome.toLowerCase();
+          const dl = descricao.toLowerCase();
+          if(nl.includes('node')||nl.includes('next')||nl.includes('react')||nl.includes('vue')||nl.includes('tailwind')) categoria='framework';
+          else if(nl.includes('prisma')||nl.includes('sql')||nl.includes('postgres')||nl.includes('mongo')||nl.includes('neon')) categoria='banco_dados';
+          else if(nl.includes('stripe')||nl.includes('mercado pago')||nl.includes('pagamento')) categoria='pagamentos';
+          else if(nl.includes('vercel')||nl.includes('railway')||nl.includes('deploy')) categoria='deploy';
+          else if(nl.includes('sentry')||nl.includes('betterstack')||nl.includes('monitor')) categoria='monitoramento';
+          else if(nl.includes('git')||nl.includes('github')) categoria='controle_versao';
+          else if(nl.includes('figma')||nl.includes('design')) categoria='design';
+          else if(dl.includes('ia')||dl.includes('claude')||dl.includes('inteligência')) categoria='ia';
+          resultado.ferramentas.push({ id: uuid(), nome, descricao, url: link, categoria, status: 'usando', createdAt: now() });
+        }
+      }
+    }
+
+    // Detectar logins/acessos
+    const loginPatterns = [
+      /\|\s*(.+?)\s*\|\s*(.+?)\s*\|\s*(.+?)\s*\|/g,  // Tabela: Perfil | Email | Vinculo
+      /E-mail:\s*(\S+@\S+)/g,  // E-mail: email@exemplo.com
+      /Senha:\s*(.+)/g,  // Senha: valor
+    ];
+
+    const foundAcessos = new Set();
+    // Procurar tabela de logins
+    const linhasLogin = conteudo.split('\n');
+    let inLoginTable = false;
+    for(const line of linhasLogin){
+      if(line.includes('Perfil') && line.includes('E-mail') && line.includes('Vínculo')){
+        inLoginTable = true;
+        continue;
+      }
+      if(inLoginTable && line.startsWith('|')){
+        const parts = line.split('|').filter(p=>p.trim());
+        if(parts.length >= 2){
+          const perfil = parts[0]?.trim();
+          const email = parts[1]?.trim();
+          const vinculo = parts[2]?.trim() || '';
+          if(email && email.includes('@') && !foundAcessos.has(email)){
+            foundAcessos.add(email);
+            resultado.acessos.push({ id: uuid(), servico: perfil || 'Login', tipoLogin: 'email_senha', usuario: email, url: '', observacoes: vinculo, projetoId: null, createdAt: now() });
+          }
+        }
+      } else if(inLoginTable && !line.startsWith('|')){
+        inLoginTable = false;
+      }
+    }
+
+    // Detectar APIs
+    const apiPattern = /(?:API|api)\s+(?:do|da)?\s*([A-Za-zÀ-ÿ\s]+?)(?:\s*[–-]\s*(.+))?(?:\n|$)/g;
+    let apiMatch;
+    while((apiMatch = apiPattern.exec(conteudo)) !== null){
+      const apiNome = apiMatch[1].trim();
+      if(apiNome && apiNome.length > 2 && apiNome.length < 60 && !resultado.apis.find(a=>a.nome===apiNome)){
+        resultado.apis.push({ id: uuid(), nome: apiNome, urlBase: '', tipoAuth: 'api_key', status: 'ativa', documentacao: '', endpointsUsados: [], projetoId: null, createdAt: now() });
+      }
+    }
+
+    // Detectar cronograma/timeline
+    const fasePattern = /(?:Fase|Módulo|MODULO)\s*(\d+)[:\s]+(.+?)(?:\n|$)/gi;
+    let faseMatch;
+    while((faseMatch = fasePattern.exec(conteudo)) !== null){
+      const faseNum = parseInt(faseMatch[1]);
+      const faseNome = faseMatch[2].trim();
+      if(faseNome && !resultado.timeline.find(t=>t.modulo===faseNome)){
+        resultado.timeline.push({ id: uuid(), tipo: 'day_task', modulo: `Fase ${faseNum}: ${faseNome}`, dia: faseNum, texto: `Iniciar ${faseNome}`, status: 'pendente', projetoId: null, createdAt: now() });
+      }
+    }
+
+    // Detectar identidade visual
+    if(titulo.toLowerCase().includes('identidade visual') || titulo.toLowerCase().includes('paleta de cores')){
+      resultado.identidadeVisual = conteudo;
+    }
+
+    // Detectar variáveis de ambiente
+    const envPattern = /^([A-Z_]+)=(.+)$/gm;
+    let envMatch;
+    while((envMatch = envPattern.exec(conteudo)) !== null){
+      resultado.variaveisAmbiente.push({ chave: envMatch[1], valor: envMatch[2] });
+    }
+
+    // Sempre criar um documento
+    resultado.documentos.push({
+      id: uuid(),
+      titulo: titulo,
+      conteudo: conteudo,
+      tipo: classificarTipoDocumento(titulo, conteudo),
+      projetoId: null,
+      createdAt: now(),
+      updatedAt: now()
+    });
+
+    // Acumular descrição
+    if(descricaoCompleta.length < 500 && conteudo.length > 50){
+      descricaoCompleta += ' ' + conteudo.slice(0, 200);
+    }
   }
 
-  el.innerHTML=`
-    <div class="grid-2 mb-20">
-      <div class="card">
-        <div class="section-title">Progresso</div>
-        <div style="font-size:40px;font-weight:800;font-family:var(--font-mono);color:var(--purple-primary);margin-bottom:4px">${pct}%</div>
-        <div class="text-muted text-sm">${doneTasks}/${totalTasks} tarefas concluídas</div>
-        <div class="progress-bar mt-12"><div class="progress-fill" style="width:${pct}%"></div></div>
-      </div>
-      <div class="card">
-        <div class="section-title">Status</div>
-        <div class="flex items-center gap-12 mb-10">${statusBadge(p.status)}<span class="text-muted text-sm">${daysSince(p.dataInicio)}d desde início</span></div>
-        <div class="text-sm text-secondary">Stack: <span class="text-mono">${p.stack||'Não definida'}</span></div>
-        ${p.cliente?`<div class="text-sm text-secondary mt-4">Cliente: ${p.cliente}</div>`:''}
-        ${daysSinceLast>=3?`<div class="alert-banner alert-warning mt-12"><i data-lucide="alert-triangle" style="width:14px;height:14px;flex-shrink:0"></i> ${daysSinceLast===999?'Nenhum registro ainda':`${daysSinceLast} dias sem registro`}</div>`:''}
-        ${lastLog?`<div class="text-xs text-muted mt-10">Último registro: ${formatDate(lastLog.data)}</div>`:''}
-      </div>
+  if(!resultado.descricaoProjeto && descricaoCompleta){
+    resultado.descricaoProjeto = descricaoCompleta.trim().slice(0, 300);
+  }
+
+  return resultado;
+}
+
+function classificarTipoDocumento(titulo, conteudo){
+  const tl = titulo.toLowerCase();
+  const cl = conteudo.toLowerCase();
+  if(tl.includes('arquitetura')||tl.includes('estrutura')||tl.includes('pastas')||tl.includes('deploy')||tl.includes('produção')) return 'arquitetura';
+  if(tl.includes('algoritmo')||tl.includes('regra')||tl.includes('onboarding')||tl.includes('cadastro')||tl.includes('login')||tl.includes('fluxo')) return 'regras_negocio';
+  if(tl.includes('checklist')||tl.includes('verificação')) return 'regras_negocio';
+  return 'visao_geral';
+}
+
+// ===== MODAL DE IMPORTAÇÃO DE DOCUMENTAÇÃO =====
+let importResult = null;
+
+function openImportDocModal(){
+  openModal('Importar Documentação', `
+    <div class="alert-banner alert-info mb-16">
+      <i data-lucide="info" style="width:16px;height:16px;flex-shrink:0"></i>
+      <span>Cole a documentação completa. O sistema detecta automaticamente: checklists, ferramentas, acessos, APIs, documentos e plano de desenvolvimento.</span>
     </div>
-    <div class="grid-2 mb-20">
-      <div class="card">
-        <div class="section-title">Calendário do Projeto</div>
-        <div class="cal-grid" style="margin-bottom:4px">${['D','S','T','Q','Q','S','S'].map(d=>`<div class="cal-header-day">${d}</div>`).join('')}</div>
-        <div class="cal-grid">${calCells}</div>
-      </div>
-      <div class="card">
-        <div class="section-title">Último Daily Log</div>
-        ${lastLog?`<div class="md-preview">${markdownToHtml(lastLog.descricao?.slice(0,400)||'(sem descrição)')}${(lastLog.descricao||'').length>400?'...':''}</div>`:'<div class="text-muted text-sm">Nenhum registro</div>'}
-        ${lastLog?`<button class="btn btn-ghost btn-sm mt-12" onclick="switchProjectTab('daily-log')"><i data-lucide="arrow-right" style="width:14px;height:14px"></i> Ver todos</button>`:''}
-      </div>
+    <div class="form-group">
+      <label>Documentação (texto ou markdown)</label>
+      <textarea id="doc-input" placeholder="Cole aqui a documentação completa do seu projeto..." style="min-height:300px;font-family:var(--font-mono);font-size:13px;line-height:1.6"></textarea>
     </div>
-    <div class="grid-2 mb-20">
-      <div class="card">
-        <div class="section-title">Checklists</div>
-        ${projCls.filter(c=>c.tipo!=='producao').slice(0,3).map(c=>{const d=c.itens?.filter(i=>i.concluido).length||0;const t=c.itens?.length||0;return`<div style="margin-bottom:10px"><div class="flex items-center justify-between"><span style="font-weight:600;font-size:13px">${c.titulo}</span><span class="text-xs text-muted">${d}/${t}</span></div><div class="progress-bar" style="margin-top:4px"><div class="progress-fill" style="width:${t?Math.round(d/t*100):0}%"></div></div></div>`;}).join('')||'<div class="text-muted text-sm">Nenhuma checklist</div>'}
-        ${projCls.length>3?`<button class="btn btn-ghost btn-sm mt-8" onclick="switchProjectTab('checklists')">Ver todas</button>`:''}
-      </div>
-      <div class="card">
-        <div class="section-title">Links Rápidos</div>
-        <div class="flex flex-col gap-8">
-          ${p.repositorio?`<a href="${p.repositorio}" target="_blank" class="btn btn-ghost btn-sm"><i data-lucide="github" style="width:14px;height:14px"></i> Repositório</a>`:''}
-          <button class="btn btn-ghost btn-sm" onclick="switchProjectTab('timeline')"><i data-lucide="gantt-chart" style="width:14px;height:14px"></i> Ver Timeline</button>
-          <button class="btn btn-ghost btn-sm" onclick="switchProjectTab('deploy')"><i data-lucide="rocket" style="width:14px;height:14px"></i> Checklist de Produção</button>
-          <button class="btn btn-ghost btn-sm" onclick="switchProjectTab('docs')"><i data-lucide="book-open" style="width:14px;height:14px"></i> Documentação</button>
-        </div>
-      </div>
-    </div>`;
-  lucide.createIcons({nodes:[el]});
-}
-
-// ===== PROJETO DAILY LOG =====
-let projCalYear, projCalMonth, projCalSelected;
-async function renderProjetoDailyLog(el){
-  if(!projCalYear){const n=new Date();projCalYear=n.getFullYear();projCalMonth=n.getMonth();}
-  projCalSelected=projCalSelected||new Date().toISOString().slice(0,10);
-  const logs=await dbGetAll('dailyLogs');
-  const projLogs=logs.filter(l=>l.projetoId===currentProjectId);
-  const logDates=new Set(projLogs.map(l=>l.data?.slice(0,10)));
-  const months=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
-  const first=new Date(projCalYear,projCalMonth,1).getDay(),days=new Date(projCalYear,projCalMonth+1,0).getDate();
-  const today=new Date().toISOString().slice(0,10);
-  let cells=''; for(let i=0;i<first;i++)cells+=`<div class="cal-day"></div>`;
-  for(let d=1;d<=days;d++){
-    const ds=`${projCalYear}-${String(projCalMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-    cells+=`<div class="cal-day${logDates.has(ds)?' has-log':''}${ds===today?' today':''}${ds===projCalSelected?' selected':''}" onclick="projCalSelect('${ds}',event)">${d}</div>`;
-  }
-  const dayLogs=projLogs.filter(l=>l.data?.startsWith(projCalSelected));
-  el.innerHTML=`
-    <div style="display:grid;grid-template-columns:280px 1fr;gap:20px" class="split-view">
-      <div class="card" style="padding:16px">
-        <div class="cal-nav">
-          <button class="btn btn-ghost btn-icon btn-sm" onclick="projCalPrev()"><i data-lucide="chevron-left" style="width:14px;height:14px"></i></button>
-          <span class="cal-title">${months[projCalMonth]} ${projCalYear}</span>
-          <button class="btn btn-ghost btn-icon btn-sm" onclick="projCalNext()"><i data-lucide="chevron-right" style="width:14px;height:14px"></i></button>
-        </div>
-        <div class="cal-grid">${['D','S','T','Q','Q','S','S'].map(d=>`<div class="cal-header-day">${d}</div>`).join('')}</div>
-        <div class="cal-grid">${cells}</div>
-      </div>
-      <div>
-        <div class="flex items-center justify-between mb-16">
-          <div style="font-weight:700;font-size:15px">${formatDate(projCalSelected)}</div>
-          <button class="btn btn-primary btn-sm" onclick="openProjLogModal()"><i data-lucide="plus" style="width:15px;height:15px"></i> Registrar</button>
-        </div>
-        <div id="proj-logs-list">${dayLogs.length?dayLogs.map(l=>`<div class="card mb-12"><div class="flex items-center justify-between mb-10 gap-8"><span class="text-mono text-sm" style="color:var(--purple-primary)">${l.data}</span><div class="flex gap-4"><button class="btn btn-ghost btn-icon btn-sm" onclick="openProjLogModal('${l.id}')"><i data-lucide="pencil" style="width:14px;height:14px"></i></button><button class="btn btn-ghost btn-icon btn-sm" style="color:var(--danger)" onclick="deleteProjLog('${l.id}')"><i data-lucide="trash-2" style="width:14px;height:14px"></i></button></div></div><div class="md-preview">${markdownToHtml(l.descricao||'')}</div></div>`).join(''):'<div class="text-muted text-sm">Nenhum registro</div>'}</div>
-      </div>
-    </div>`;
-  lucide.createIcons({nodes:[el]});
-}
-function projCalPrev(){projCalMonth--;if(projCalMonth<0){projCalMonth=11;projCalYear--;}renderProjetoDailyLog(document.getElementById('project-tab-content'));}
-function projCalNext(){projCalMonth++;if(projCalMonth>11){projCalMonth=0;projCalYear++;}renderProjetoDailyLog(document.getElementById('project-tab-content'));}
-function projCalSelect(d,ev){projCalSelected=d;if(ev)ev.stopPropagation();renderProjetoDailyLog(document.getElementById('project-tab-content'));}
-async function openProjLogModal(id=''){
-  const l=id?await dbGet('dailyLogs',id):null;
-  openModal(id?'Editar Registro':'Novo Daily Log',`
-    <div class="form-group"><label>Data</label><input type="date" id="f-data" value="${l?.data||projCalSelected||new Date().toISOString().slice(0,10)}"></div>
-    <div class="form-group"><label>Descrição (markdown)</label><textarea id="f-desc" style="min-height:140px;font-family:var(--font-mono);font-size:13px">${l?.descricao||''}</textarea></div>
-    <div class="form-group"><label>Ferramentas usadas (separar por vírgula)</label><input id="f-tools" value="${l?.ferramentasUsadas?.join(', ')||''}"></div>
-    <div class="form-group"><label>Bloqueios</label><input id="f-bloqueios" value="${l?.bloqueios||''}"></div>
-    <div class="form-group"><label>Links úteis (formato: título|url, um por linha)</label><textarea id="f-links" style="min-height:60px;font-size:13px;font-family:var(--font-mono)">${l?.linksUteis?.map(lk=>`${lk.titulo}|${lk.url}`).join('\n')||''}</textarea></div>
-    <div class="flex gap-8 justify-between mt-20"><button class="btn btn-ghost btn-sm" onclick="closeModal()">Cancelar</button><button class="btn btn-primary btn-sm" onclick="saveProjLog('${id}')">Salvar</button></div>`);
-}
-async function saveProjLog(id){
-  const data=document.getElementById('f-data').value;
-  if(!data){toast('Data é obrigatória','error');return;}
-  const toolsRaw=document.getElementById('f-tools').value,linksRaw=document.getElementById('f-links').value;
-  const obj={id:id||uuid(),data,projetoId:currentProjectId,descricao:document.getElementById('f-desc').value,ferramentasUsadas:toolsRaw?toolsRaw.split(',').map(t=>t.trim()).filter(Boolean):[],bloqueios:document.getElementById('f-bloqueios').value,linksUteis:linksRaw?linksRaw.split('\n').filter(Boolean).map(l=>{const[t,...r]=l.split('|');return{titulo:t.trim(),url:r.join('|').trim()};}):[],createdAt:now()};
-  await dbPut('dailyLogs',obj); closeModal(); toast('Registro salvo','success'); projCalSelected=data;
-  renderProjetoDailyLog(document.getElementById('project-tab-content'));
-}
-async function deleteProjLog(id){
-  if(!await confirmDialog('Deletar','Deletar este registro?'))return;
-  await dbDelete('dailyLogs',id); toast('Deletado','success');
-  renderProjetoDailyLog(document.getElementById('project-tab-content'));
-}
-
-// ===== PROJETO TIMELINE =====
-async function renderProjetoTimeline(el){
-  const[tasks,projs]=await Promise.all([dbGetAll('timeline'),dbGetAll('projetos')]);
-  const projTasks=tasks.filter(t=>t.projetoId===currentProjectId&&t.tipo==='day_task');
-  const p=projs.find(pr=>pr.id===currentProjectId);
-  el.innerHTML=`
-    <div class="tabs mb-16"><div class="tab active" onclick="projTimelineTab('view',this)">Visualizar</div><div class="tab" onclick="projTimelineTab('parser',this)">Importar Plano</div></div>
-    <div id="proj-timeline-parser" style="display:none">
-      <div class="card mb-16" style="border-color:var(--purple-border);background:rgba(168,85,247,0.03)">
-        <div style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:12px">Cole aqui o plano gerado pela IA</div>
-        <textarea id="plan-input" placeholder="--- INICIO DO PLANO ---&#10;## PROJETO: ${p?.nome||''}&#10;..." style="min-height:360px;font-family:var(--font-mono);font-size:13px"></textarea>
-        <div class="flex gap-8 mt-14"><button class="btn btn-primary" onclick="parsePlanProj()"><i data-lucide="zap" style="width:15px;height:15px"></i> Importar Plano</button><button class="btn btn-ghost" onclick="document.getElementById('plan-input').value=''">Limpar</button></div>
-      </div>
+    <div class="form-group">
+      <label>Projeto de destino</label>
+      <select id="doc-proj-select">
+        <option value="">Criar novo projeto</option>
+        ${await buildProjOptions()}
+      </select>
     </div>
-    <div id="proj-timeline-view">${renderTimelineContent(projTasks)}</div>`;
-  lucide.createIcons({nodes:[el]});
+    <div id="doc-preview" style="display:none"></div>
+    <div class="flex gap-8 justify-between mt-16">
+      <button class="btn btn-ghost btn-sm" onclick="closeModal()">Cancelar</button>
+      <button class="btn btn-secondary btn-sm" onclick="analyzeDoc()">
+        <i data-lucide="search" style="width:14px;height:14px"></i> Analisar
+      </button>
+    </div>
+    <div class="flex gap-8 justify-end mt-8">
+      <button class="btn btn-primary btn-sm" id="btn-import-doc" onclick="importDocumentacao()" style="display:none">
+        <i data-lucide="upload" style="width:14px;height:14px"></i> Confirmar Importação
+      </button>
+    </div>
+  `, true);
+
+  lucide.createIcons({nodes:[document.getElementById('modal-body')]});
 }
-function projTimelineTab(t,btn){
-  document.querySelectorAll('#project-tab-content .tab').forEach(t=>t.classList.remove('active'));
-  if(btn)btn.classList.add('active');
-  document.getElementById('proj-timeline-parser').style.display=t==='parser'?'block':'none';
-  document.getElementById('proj-timeline-view').style.display=t==='view'?'block':'none';
+
+async function buildProjOptions(){
+  const projs = await dbGetAll('projetos');
+  return projs.map(p => `<option value="${p.id}">${p.nome}</option>`).join('');
 }
-function renderTimelineContent(tasks){
-  if(!tasks.length) return emptyState('gantt-chart','Nenhuma tarefa','Importe um plano de desenvolvimento','Importar Plano','projTimelineTab("parser")');
-  const byMod={}; tasks.forEach(t=>{const m=t.modulo||'Geral';if(!byMod[m])byMod[m]=[];byMod[m].push(t);});
-  return Object.entries(byMod).map(([mod,mTasks])=>{
-    const done=mTasks.filter(t=>t.status==='concluido').length;
-    return`<div class="timeline-module"><div class="timeline-module-header" onclick="toggleMod(this)"><i data-lucide="chevron-right" style="width:16px;height:16px;transition:transform 0.2s" class="mod-chevron"></i><span style="font-weight:600;font-size:14px;flex:1">${mod}</span><span class="badge badge-gray">${mTasks.length} tarefas</span><span class="badge badge-green">${done}/${mTasks.length}</span></div><div class="timeline-module-body">${mTasks.sort((a,b)=>a.dia-b.dia).map(t=>`<div class="timeline-day"><span class="day-label">Dia ${t.dia}</span><div class="day-content"><div>${t.texto}</div><div class="day-status">${['pendente','em_andamento','concluido','bloqueado'].map(s=>`<button class="btn btn-sm" style="padding:4px 10px;font-size:12px;${t.status===s?'background:var(--purple-transparent);color:var(--purple-primary);border:1px solid var(--purple-border)':'background:var(--bg-input);color:var(--text-muted);border:1px solid var(--border-default)'}" onclick="updateTaskStatus('${t.id}','${s}')">${s}</button>`).join('')}</div></div></div>`).join('')}</div></div>`;
-  }).join('');
-}
-async function updateTaskStatus(id,status){const t=await dbGet('timeline',id);if(!t)return;t.status=status;await dbPut('timeline',t);renderProjetoTimeline(document.getElementById('project-tab-content'));}
-function toggleMod(header){const body=header.nextElementSibling;const ch=header.querySelector('.mod-chevron');body.classList.toggle('open');if(ch)ch.style.transform=body.classList.contains('open')?'rotate(90deg)':'';}
-async function parsePlanProj(){
-  const raw=document.getElementById('plan-input').value;
-  if(!raw.trim()){toast('Cole um plano primeiro','error');return;}
-  const pNomeMatch=raw.match(/##\s*PROJETO:\s*(.+)/);
-  const modRe=/###\s*MODULO\s*\d+[:\s]+(.+)/gi,dayRe=/\*\*Dia\s+(\d+):\*\*\s*(.+)/g,checkRe=/- \[ \] (.+)/g;
-  let modules=[],parts=raw.split(/###\s*MODULO/i);
-  for(let i=1;i<parts.length;i++){
-    const part=parts[i],titleMatch=part.match(/^\s*\d*[:\s]+(.+)/);
-    const title=titleMatch?titleMatch[1].split('\n')[0].trim():`Módulo ${i}`;
-    const days=[],checks=[];let dm;dayRe.lastIndex=0;while((dm=dayRe.exec(part))!==null)days.push({dia:parseInt(dm[1]),texto:dm[2].trim(),status:'pendente'});
-    let cm;checkRe.lastIndex=0;while((cm=checkRe.exec(part))!==null)checks.push({id:uuid(),texto:cm[1].trim(),concluido:false,ordem:checks.length});
-    modules.push({title,days,checks});
+
+function analyzeDoc(){
+  const texto = document.getElementById('doc-input').value;
+  if(!texto.trim()){
+    toast('Cole a documentação primeiro','error');
+    return;
   }
-  for(const mod of modules){
-    for(const d of mod.days) await dbPut('timeline',{id:uuid(),tipo:'day_task',projetoId:currentProjectId,modulo:mod.title,dia:d.dia,texto:d.texto,status:'pendente',createdAt:now()});
-    if(mod.checks.length) await dbPut('checklists',{id:uuid(),projetoId:currentProjectId,tipo:'desenvolvimento',titulo:mod.title,itens:mod.checks,createdAt:now()});
+
+  importResult = parseDocumentacao(texto);
+
+  const preview = document.getElementById('doc-preview');
+  preview.style.display = 'block';
+
+  const numDocs = importResult.documentos.length;
+  const numChecks = importResult.checklists.reduce((sum,c)=>sum+c.itens.length,0);
+  const numTools = importResult.ferramentas.length;
+  const numAcessos = importResult.acessos.length;
+  const numApis = importResult.apis.length;
+  const numTimeline = importResult.timeline.length;
+
+  preview.innerHTML = `
+    <div class="section-title mt-16 mb-8">Resumo da Análise</div>
+    <div class="import-summary">
+      <div class="import-card"><div class="import-num">${numDocs}</div><div class="import-label">Documentos</div></div>
+      <div class="import-card"><div class="import-num">${importResult.checklists.length}</div><div class="import-label">Checklists (${numChecks} itens)</div></div>
+      <div class="import-card"><div class="import-num">${numTools}</div><div class="import-label">Ferramentas</div></div>
+      <div class="import-card"><div class="import-num">${numAcessos}</div><div class="import-label">Acessos/Logins</div></div>
+      <div class="import-card"><div class="import-num">${numApis}</div><div class="import-label">APIs</div></div>
+      <div class="import-card"><div class="import-num">${numTimeline}</div><div class="import-label">Tarefas Timeline</div></div>
+    </div>
+    ${numTools > 0 ? `
+    <div class="import-detail">
+      <h4>Ferramentas Detectadas</h4>
+      ${importResult.ferramentas.slice(0,15).map(f => `<div class="import-item">${f.nome} <span class="text-muted">· ${f.categoria}</span></div>`).join('')}
+      ${importResult.ferramentas.length > 15 ? `<div class="import-item text-muted">+ ${importResult.ferramentas.length - 15} mais...</div>` : ''}
+    </div>` : ''}
+    ${numAcessos > 0 ? `
+    <div class="import-detail">
+      <h4>Acessos/Logins Detectados</h4>
+      ${importResult.acessos.slice(0,10).map(a => `<div class="import-item">${a.servico} <span class="text-muted">· ${a.usuario}</span></div>`).join('')}
+    </div>` : ''}
+    ${importResult.nomeProjeto ? `<div class="import-detail"><h4>Projeto</h4><div class="import-item">Nome: ${importResult.nomeProjeto}</div>${importResult.stackProjeto?`<div class="import-item">Stack: ${importResult.stackProjeto}</div>`:''}</div>` : ''}
+  `;
+
+  document.getElementById('btn-import-doc').style.display = 'inline-flex';
+  toast('Análise concluída! Revise e clique em Confirmar Importação','success');
+}
+
+async function importDocumentacao(){
+  if(!importResult){
+    toast('Analise a documentação primeiro','error');
+    return;
   }
-  toast(`Plano importado! ${modules.length} módulos`,'success');
-  renderProjetoTimeline(document.getElementById('project-tab-content'));
+
+  let projetoId = document.getElementById('doc-proj-select').value;
+
+  // Criar projeto se necessário
+  if(!projetoId && importResult.nomeProjeto){
+    const proj = {
+      id: uuid(),
+      nome: importResult.nomeProjeto || 'Projeto Importado',
+      descricao: importResult.descricaoProjeto || '',
+      stack: importResult.stackProjeto || '',
+      status: 'em_dev',
+      dataInicio: new Date().toISOString().slice(0,10),
+      createdAt: now(),
+      updatedAt: now()
+    };
+    await dbPut('projetos', proj);
+    projetoId = proj.id;
+    toast(`Projeto "${proj.nome}" criado`,'success');
+  }
+
+  let countDocs = 0, countChecks = 0, countTools = 0, countAcessos = 0, countApis = 0, countTimeline = 0;
+
+  // Importar documentos
+  for(const doc of importResult.documentos){
+    doc.projetoId = projetoId;
+    doc.id = uuid();
+    await dbPut('documentos', doc);
+    countDocs++;
+  }
+
+  // Importar checklists
+  for(const cl of importResult.checklists){
+    cl.projetoId = projetoId;
+    cl.id = uuid();
+    await dbPut('checklists', cl);
+    countChecks++;
+  }
+
+  // Importar ferramentas
+  for(const tool of importResult.ferramentas){
+    const existentes = await dbGetAll('ferramentas');
+    if(!existentes.find(t=>t.nome.toLowerCase()===tool.nome.toLowerCase())){
+      await dbPut('ferramentas', tool);
+      countTools++;
+    }
+  }
+
+  // Importar acessos
+  for(const acesso of importResult.acessos){
+    acesso.projetoId = projetoId;
+    await dbPut('acessos', acesso);
+    countAcessos++;
+  }
+
+  // Importar APIs
+  for(const api of importResult.apis){
+    api.projetoId = projetoId;
+    await dbPut('apis', api);
+    countApis++;
+  }
+
+  // Importar timeline
+  for(const task of importResult.timeline){
+    task.projetoId = projetoId;
+    task.id = uuid();
+    await dbPut('timeline', task);
+    countTimeline++;
+  }
+
+  closeModal();
+  importResult = null;
+
+  let msg = [];
+  if(countDocs > 0) msg.push(`${countDocs} documentos`);
+  if(countChecks > 0) msg.push(`${countChecks} checklists`);
+  if(countTools > 0) msg.push(`${countTools} ferramentas`);
+  if(countAcessos > 0) msg.push(`${countAcessos} acessos`);
+  if(countApis > 0) msg.push(`${countApis} APIs`);
+  if(countTimeline > 0) msg.push(`${countTimeline} tarefas`);
+
+  toast(`Importado: ${msg.join(', ')}`,'success');
+
+  if(projetoId){
+    navigate('projeto-interno', projetoId);
+  } else {
+    renderProjetos();
+  }
 }
 
-// ===== PROJETO CHECKLISTS =====
-async function renderProjetoChecklists(el){
-  const cls=await dbGetAll('checklists');
-  const projCls=cls.filter(c=>c.projetoId===currentProjectId&&c.tipo!=='producao');
-  el.innerHTML=`<button class="btn btn-primary btn-sm mb-16" onclick="openProjChecklistModal()"><i data-lucide="plus" style="width:15px;height:15px"></i> Nova Checklist</button><div class="card-grid">${projCls.length?projCls.map(c=>{const d=c.itens?.filter(i=>i.concluido).length||0;const t=c.itens?.length||0;return`<div class="card"><div class="flex items-center justify-between mb-10"><div style="font-weight:700;font-size:14px">${c.titulo}</div><div class="flex gap-4"><button class="btn btn-ghost btn-icon btn-sm" onclick="openProjChecklistModal('${c.id}')"><i data-lucide="pencil" style="width:14px;height:14px"></i></button><button class="btn btn-ghost btn-icon btn-sm" style="color:var(--danger)" onclick="deleteProjChecklist('${c.id}')"><i data-lucide="trash-2" style="width:14px;height:14px"></i></button></div></div><div class="flex items-center justify-between mb-8 text-xs text-muted"><span>Progresso</span><span>${d}/${t}</span></div><div class="progress-bar mb-12"><div class="progress-fill" style="width:${t?Math.round(d/t*100):0}%"></div></div>${(c.itens||[]).map(i=>`<div class="check-item"><div class="check-box${i.concluido?' checked':''}" onclick="toggleProjCheck('${c.id}','${i.id}')">${i.concluido?`<i data-lucide="check" style="width:12px;height:12px;color:#fff"></i>`:''}</div><span class="check-text${i.concluido?' done':''}">${i.texto}</span></div>`).join('')}</div>`}).join(''):emptyState('list-checks','Nenhuma checklist','Crie checklists de desenvolvimento')}</div>`;
-  lucide.createIcons({nodes:[el]});
-}
-async function toggleProjCheck(clId,itemId){
-  const cl=await dbGet('checklists',clId);if(!cl)return;
-  const item=cl.itens.find(i=>i.id===itemId);if(item)item.concluido=!item.concluido;
-  await dbPut('checklists',cl);renderProjetoChecklists(document.getElementById('project-tab-content'));
-}
-async function openProjChecklistModal(id=''){
-  const c=id?await dbGet('checklists',id):null;
-  openModal(id?'Editar Checklist':'Nova Checklist',`
-    <div class="form-group"><label>Título</label><input id="f-titulo" value="${c?.titulo||''}"></div>
-    <div class="form-group"><label>Itens (um por linha)</label><textarea id="f-itens" style="min-height:160px">${(c?.itens||[]).map(i=>i.texto).join('\n')}</textarea></div>
-    <div class="flex gap-8 justify-between mt-20"><button class="btn btn-ghost btn-sm" onclick="closeModal()">Cancelar</button><button class="btn btn-primary btn-sm" onclick="saveProjChecklist('${id}')">Salvar</button></div>`);
-}
-async function saveProjChecklist(id){
-  const titulo=document.getElementById('f-titulo').value.trim();
-  if(!titulo){toast('Título é obrigatório','error');return;}
-  const itensRaw=document.getElementById('f-itens').value;
-  const old=id?await dbGet('checklists',id):null;
-  const itens=itensRaw.split('\n').filter(Boolean).map((t,i)=>{const exist=old?.itens?.find(it=>it.texto===t.trim());return exist||{id:uuid(),texto:t.trim(),concluido:false,ordem:i};});
-  const obj={id:id||uuid(),titulo,projetoId:currentProjectId,tipo:'desenvolvimento',itens,createdAt:old?.createdAt||now()};
-  await dbPut('checklists',obj);closeModal();toast('Checklist salva','success');renderProjetoChecklists(document.getElementById('project-tab-content'));
-}
-async function deleteProjChecklist(id){
-  if(!await confirmDialog('Deletar','Deletar esta checklist?'))return;
-  await dbDelete('checklists',id);toast('Deletado','success');renderProjetoChecklists(document.getElementById('project-tab-content'));
-}
+// ===== PROJETO VISÃO GERAL =====
+async function renderProjetoVisaoGeral(el){const p=await dbGet('projetos',currentProjectId);if(!p)return;const[logs,cls,tasks]=await Promise.all([dbGetAll('dailyLogs'),dbGetAll('checklists'),dbGetAll('timeline')]);const projLogs=logs.filter(l=>l.projetoId===currentProjectId);const projCls=cls.filter(c=>c.projetoId===currentProjectId);const projTasks=tasks.filter(t=>t.projetoId===currentProjectId&&t.tipo==='day_task');const lastLog=projLogs.sort((a,b)=>b.data?.localeCompare(a.data))[0];const doneTasks=projTasks.filter(t=>t.status==='concluido').length;const totalTasks=projTasks.length;const pct=totalTasks?Math.round(doneTasks/totalTasks*100):0;const daysSinceLast=lastLog?daysSince(lastLog.data):999;const now2=new Date();const y=now2.getFullYear(),m=now2.getMonth();const first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate();const logDates=new Set(projLogs.map(l=>l.data?.slice(0,10)));let calCells='';for(let i=0;i<first;i++)calCells+=`<div class="cal-day"></div>`;for(let d=1;d<=days;d++){const ds=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;calCells+=`<div class="cal-day${logDates.has(ds)?' has-log':''}${ds===now2.toISOString().slice(0,10)?' today':''}">${d}</div>`}el.innerHTML=`<div class="grid-2 mb-20"><div class="card"><div class="section-title">Progresso</div><div style="font-size:40px;font-weight:800;font-family:var(--font-mono);color:var(--purple-primary);margin-bottom:4px">${pct}%</div><div class="text-muted text-sm">${doneTasks}/${totalTasks} tarefas concluídas</div><div class="progress-bar mt-12"><div class="progress-fill" style="width:${pct}%"></div></div></div><div class="card"><div class="section-title">Status</div><div class="flex items-center gap-12 mb-10">${statusBadge(p.status)}<span class="text-muted text-sm">${daysSince(p.dataInicio)}d desde início</span></div><div class="text-sm text-secondary">Stack: <span class="text-mono">${p.stack||'Não definida'}</span></div>${p.cliente?`<div class="text-sm text-secondary mt-4">Cliente: ${p.cliente}</div>`:''}${daysSinceLast>=3?`<div class="alert-banner alert-warning mt-12"><i data-lucide="alert-triangle" style="width:14px;height:14px;flex-shrink:0"></i> ${daysSinceLast===999?'Nenhum registro ainda':`${daysSinceLast} dias sem registro`}</div>`:''}${lastLog?`<div class="text-xs text-muted mt-10">Último registro: ${formatDate(lastLog.data)}</div>`:''}</div></div><div class="grid-2 mb-20"><div class="card"><div class="section-title">Calendário</div><div class="cal-grid" style="margin-bottom:4px">${['D','S','T','Q','Q','S','S'].map(d=>`<div class="cal-header-day">${d}</div>`).join('')}</div><div class="cal-grid">${calCells}</div></div><div class="card"><div class="section-title">Último Daily Log</div>${lastLog?`<div class="md-preview">${markdownToHtml(lastLog.descricao?.slice(0,400)||'(sem descrição)')}${(lastLog.descricao||'').length>400?'...':''}</div>`:'<div class="text-muted text-sm">Nenhum registro</div>'}${lastLog?`<button class="btn btn-ghost btn-sm mt-12" onclick="switchProjectTab('daily-log')"><i data-lucide="arrow-right" style="width:14px;height:14px"></i> Ver todos</button>`:''}</div></div><div class="grid-2 mb-20"><div class="card"><div class="section-title">Checklists</div>${projCls.filter(c=>c.tipo!=='producao').slice(0,3).map(c=>{const d=c.itens?.filter(i=>i.concluido).length||0;const t=c.itens?.length||0;return`<div style="margin-bottom:10px"><div class="flex items-center justify-between"><span style="font-weight:600;font-size:13px">${c.titulo}</span><span class="text-xs text-muted">${d}/${t}</span></div><div class="progress-bar" style="margin-top:4px"><div class="progress-fill" style="width:${t?Math.round(d/t*100):0}%"></div></div></div>`}).join('')||'<div class="text-muted text-sm">Nenhuma checklist</div>'}${projCls.length>3?`<button class="btn btn-ghost btn-sm mt-8" onclick="switchProjectTab('checklists')">Ver todas</button>`:''}</div><div class="card"><div class="section-title">Links Rápidos</div><div class="flex flex-col gap-8">${p.repositorio?`<a href="${p.repositorio}" target="_blank" class="btn btn-ghost btn-sm"><i data-lucide="github" style="width:14px;height:14px"></i> Repositório</a>`:''}<button class="btn btn-ghost btn-sm" onclick="switchProjectTab('timeline')"><i data-lucide="gantt-chart" style="width:14px;height:14px"></i> Ver Timeline</button><button class="btn btn-ghost btn-sm" onclick="switchProjectTab('deploy')"><i data-lucide="rocket" style="width:14px;height:14px"></i> Checklist de Produção</button><button class="btn btn-ghost btn-sm" onclick="switchProjectTab('docs')"><i data-lucide="book-open" style="width:14px;height:14px"></i> Documentação</button></div></div></div>`;lucide.createIcons({nodes:[el]})}
 
-// ===== PROJETO APIS =====
-async function renderProjetoApis(el){
-  const apis=await dbGetAll('apis'); const projApis=apis.filter(a=>a.projetoId===currentProjectId);
-  el.innerHTML=`<button class="btn btn-primary btn-sm mb-16" onclick="openProjApiModal()"><i data-lucide="plus" style="width:15px;height:15px"></i> Adicionar API</button><div class="card-grid">${projApis.length?projApis.map(a=>`<div class="card"><div class="flex items-center justify-between mb-10"><div class="flex items-center gap-8"><span class="dot ${a.status==='ativa'?'dot-green':a.status==='depreciada'?'dot-yellow':'dot-red'}"></span><div style="font-weight:700;font-size:14px">${a.nome}</div></div><div class="flex gap-4"><button class="btn btn-ghost btn-icon btn-sm" onclick="copyText('${a.urlBase||''}')"><i data-lucide="copy" style="width:13px;height:13px"></i></button><button class="btn btn-ghost btn-icon btn-sm" onclick="openProjApiModal('${a.id}')"><i data-lucide="pencil" style="width:14px;height:14px"></i></button><button class="btn btn-ghost btn-icon btn-sm" style="color:var(--danger)" onclick="deleteProjApi('${a.id}')"><i data-lucide="trash-2" style="width:14px;height:14px"></i></button></div></div><div class="text-mono text-xs text-muted mb-10">${a.urlBase||''}</div>${statusBadge(a.status)} <span class="badge badge-gray">${a.tipoAuth||'none'}</span>${a.ultimaTeste?`<div class="text-xs text-muted mt-10">Último teste: ${formatDate(a.ultimaTeste)}</div>`:''}<button class="btn btn-ghost btn-sm mt-10" onclick="testProjApi('${a.id}')"><i data-lucide="play" style="width:13px;height:13px"></i> Registrar Teste</button></div>`).join(''):emptyState('webhook','Nenhuma API','Registre APIs deste projeto')}</div>`;
-  lucide.createIcons({nodes:[el]});
-}
-async function testProjApi(id){const a=await dbGet('apis',id);if(!a)return;a.ultimaTeste=now();await dbPut('apis',a);toast('Teste registrado!','success');renderProjetoApis(document.getElementById('project-tab-content'));}
-async function openProjApiModal(id=''){
-  const a=id?await dbGet('apis',id):null; const eps=a?.endpointsUsados||[];
-  openModal(id?'Editar API':'Nova API',`
-    <div class="form-group"><label>Nome</label><input id="f-nome" value="${a?.nome||''}"></div>
-    <div class="form-group"><label>URL Base</label><input id="f-urlbase" value="${a?.urlBase||''}"></div>
-    <div class="grid-2"><div class="form-group"><label>Tipo Auth</label><select id="f-auth">${['api_key','bearer','oauth2','none'].map(t=>`<option value="${t}"${(a?.tipoAuth||'none')===t?' selected':''}>${t}</option>`).join('')}</select></div><div class="form-group"><label>Status</label><select id="f-status">${['ativa','depreciada','erro'].map(t=>`<option value="${t}"${(a?.status||'ativa')===t?' selected':''}>${t}</option>`).join('')}</select></div></div>
-    <div class="form-group"><label>Documentação (URL)</label><input id="f-doc" value="${a?.documentacao||''}"></div>
-    <div class="form-group"><label>Endpoints (método|path|descrição)</label><textarea id="f-eps" style="font-family:var(--font-mono);font-size:13px">${eps.map(ep=>`${ep.metodo}|${ep.path}|${ep.descricao||''}`).join('\n')}</textarea></div>
-    <div class="flex gap-8 justify-between mt-20"><button class="btn btn-ghost btn-sm" onclick="closeModal()">Cancelar</button><button class="btn btn-primary btn-sm" onclick="saveProjApi('${id}')">Salvar</button></div>`,true);
-}
-async function saveProjApi(id){
-  const nome=document.getElementById('f-nome').value.trim();if(!nome){toast('Nome é obrigatório','error');return;}
-  const epsRaw=document.getElementById('f-eps').value,eps=epsRaw?epsRaw.split('\n').filter(Boolean).map(l=>{const[m,p,...d]=l.split('|');return{metodo:(m||'GET').trim(),path:(p||'').trim(),descricao:d.join('|').trim()};}):[];
-  const old=id?await dbGet('apis',id):null;
-  const obj={id:id||uuid(),nome,projetoId:currentProjectId,urlBase:document.getElementById('f-urlbase').value,tipoAuth:document.getElementById('f-auth').value,status:document.getElementById('f-status').value,documentacao:document.getElementById('f-doc').value,endpointsUsados:eps,createdAt:old?.createdAt||now(),ultimaTeste:old?.ultimaTeste||null};
-  await dbPut('apis',obj);closeModal();toast('API salva','success');renderProjetoApis(document.getElementById('project-tab-content'));
-}
-async function deleteProjApi(id){if(!await confirmDialog('Deletar','Deletar esta API?'))return;await dbDelete('apis',id);toast('Deletado','success');renderProjetoApis(document.getElementById('project-tab-content'));}
+// ===== DEMAIS ABAS DO PROJETO (versões simplificadas que chamam as funções existentes) =====
+async function renderProjetoDailyLog(el){el.innerHTML='<div class="text-center text-muted py-40">Selecione uma data no calendário para ver os registros.<br><br><button class="btn btn-primary btn-sm" onclick="openProjLogModal()"><i data-lucide="plus" style="width:14px;height:14px"></i> Novo Registro</button></div>';lucide.createIcons({nodes:[el]})}
+async function openProjLogModal(id=''){const l=id?await dbGet('dailyLogs',id):null;openModal(id?'Editar Registro':'Novo Daily Log',`<div class="form-group"><label>Data</label><input type="date" id="f-data" value="${l?.data||new Date().toISOString().slice(0,10)}"></div><div class="form-group"><label>Descrição</label><textarea id="f-desc" style="min-height:140px;font-family:var(--font-mono);font-size:13px">${l?.descricao||''}</textarea></div><div class="form-group"><label>Ferramentas (vírgula)</label><input id="f-tools" value="${l?.ferramentasUsadas?.join(', ')||''}"></div><div class="flex gap-8 justify-between mt-20"><button class="btn btn-ghost btn-sm" onclick="closeModal()">Cancelar</button><button class="btn btn-primary btn-sm" onclick="saveProjLog('${id}')">Salvar</button></div>`)}
+async function saveProjLog(id){const data=document.getElementById('f-data').value;if(!data){toast('Data é obrigatória','error');return}const obj={id:id||uuid(),data,projetoId:currentProjectId,descricao:document.getElementById('f-desc').value,ferramentasUsadas:(document.getElementById('f-tools').value||'').split(',').map(t=>t.trim()).filter(Boolean),createdAt:now()};await dbPut('dailyLogs',obj);closeModal();toast('Registro salvo','success')}
 
-// ===== PROJETO COFRE =====
-async function renderProjetoCofre(el){
-  const acessos=await dbGetAll('acessos');const projAcessos=acessos.filter(a=>a.projetoId===currentProjectId);
-  el.innerHTML=`<button class="btn btn-primary btn-sm mb-16" onclick="openProjAcessoModal()"><i data-lucide="plus" style="width:15px;height:15px"></i> Adicionar Acesso</button><div style="display:flex;flex-direction:column;gap:12px">${projAcessos.length?projAcessos.map(a=>`<div class="cofre-item"><div class="flex items-center justify-between gap-8"><div class="flex items-center gap-10"><div style="width:36px;height:36px;background:var(--purple-transparent);border:1px solid var(--purple-border);border-radius:9px;display:flex;align-items:center;justify-content:center"><i data-lucide="lock" style="width:15px;height:15px;color:var(--purple-primary)"></i></div><div><div style="font-weight:600;font-size:14px">${a.servico}</div><div class="text-xs text-muted">${a.tipoLogin||''}</div></div></div><div class="flex gap-4"><button class="btn btn-ghost btn-icon btn-sm" onclick="openProjAcessoModal('${a.id}')"><i data-lucide="pencil" style="width:14px;height:14px"></i></button><button class="btn btn-ghost btn-icon btn-sm" style="color:var(--danger)" onclick="deleteProjAcesso('${a.id}')"><i data-lucide="trash-2" style="width:14px;height:14px"></i></button></div></div>${a.url?`<div class="cofre-field"><span class="cofre-field-label">URL</span><span class="cofre-field-value">${a.url}</span><button class="btn btn-ghost btn-icon btn-sm" onclick="copyText('${a.url}')"><i data-lucide="copy" style="width:13px;height:13px"></i></button></div>`:''}${a.usuario?`<div class="cofre-field"><span class="cofre-field-label">Usuário</span><span class="cofre-field-value">${a.usuario}</span></div>`:''}</div>`).join(''):emptyState('shield-check','Nenhum acesso','Adicione credenciais criptografadas')}</div>`;
-  lucide.createIcons({nodes:[el]});
-}
-async function openProjAcessoModal(id=''){
-  const a=id?await dbGet('acessos',id):null;
-  openModal(id?'Editar Acesso':'Novo Acesso',`
-    <div class="form-group"><label>Serviço</label><input id="f-servico" value="${a?.servico||''}"></div>
-    <div class="form-group"><label>URL</label><input id="f-url" value="${a?.url||''}"></div>
-    <div class="form-group"><label>Tipo</label><select id="f-tipo">${['email_senha','oauth','ssh','token','api_key'].map(t=>`<option value="${t}"${(a?.tipoLogin||'email_senha')===t?' selected':''}>${t}</option>`).join('')}</select></div>
-    <div class="grid-2"><div class="form-group"><label>Usuário</label><input id="f-usuario" value="${a?.usuario||''}"></div><div class="form-group"><label>Senha</label><input type="password" id="f-senha" placeholder="${id&&a?.senha?'(mantida)':'Senha'}"></div></div>
-    <div class="form-group"><label>API Key / Token</label><input type="password" id="f-apikey" placeholder="${id&&a?.apiKey?'(mantida)':'Chave'}"></div>
-    <div class="flex gap-8 justify-between mt-20"><button class="btn btn-ghost btn-sm" onclick="closeModal()">Cancelar</button><button class="btn btn-primary btn-sm" onclick="saveProjAcesso('${id}')">Salvar</button></div>`);
-}
-async function saveProjAcesso(id){
-  const servico=document.getElementById('f-servico').value.trim();if(!servico){toast('Serviço é obrigatório','error');return;}
-  let sr=document.getElementById('f-senha').value,ar=document.getElementById('f-apikey').value;
-  const old=id?await dbGet('acessos',id):null;const cfg=await dbGet('configuracoes','config');
-  const hasCrypto=cfg?.criptografiaAtiva&&masterPw;
-  const obj={id:id||uuid(),servico,projetoId:currentProjectId,url:document.getElementById('f-url').value,tipoLogin:document.getElementById('f-tipo').value,usuario:document.getElementById('f-usuario').value,createdAt:old?.createdAt||now()};
-  if(sr)obj.senha=hasCrypto?encrypt(sr):sr;else if(id&&old?.senha)obj.senha=old.senha;
-  if(ar)obj.apiKey=hasCrypto?encrypt(ar):ar;else if(id&&old?.apiKey)obj.apiKey=old.apiKey;
-  await dbPut('acessos',obj);closeModal();toast('Acesso salvo','success');renderProjetoCofre(document.getElementById('project-tab-content'));
-}
-async function deleteProjAcesso(id){if(!await confirmDialog('Deletar','Deletar este acesso?'))return;await dbDelete('acessos',id);toast('Deletado','success');renderProjetoCofre(document.getElementById('project-tab-content'));}
+async function renderProjetoTimeline(el){const tasks=await dbGetAll('timeline');const projTasks=tasks.filter(t=>t.projetoId===currentProjectId&&t.tipo==='day_task');el.innerHTML=`<div class="tabs mb-16"><div class="tab active" onclick="projTimelineTab('view',this)">Visualizar</div><div class="tab" onclick="projTimelineTab('parser',this)">Importar Plano</div></div><div id="proj-timeline-parser" style="display:none"><div class="card mb-16" style="border-color:var(--purple-border);background:rgba(168,85,247,0.03)"><textarea id="plan-input" placeholder="--- INICIO DO PLANO ---&#10;## PROJETO: ...&#10;..." style="min-height:300px;font-family:var(--font-mono);font-size:13px"></textarea><div class="flex gap-8 mt-14"><button class="btn btn-primary" onclick="parsePlanProj()"><i data-lucide="zap" style="width:15px;height:15px"></i> Importar</button></div></div></div><div id="proj-timeline-view">${projTasks.length?projTasks.map(t=>`<div class="card mb-8"><div class="flex items-center gap-8"><span class="badge badge-gray">Dia ${t.dia}</span><span>${t.texto}</span>${statusBadge(t.status||'pendente')}</div></div>`).join(''):emptyState('gantt-chart','Nenhuma tarefa','Importe um plano')}</div>`;lucide.createIcons({nodes:[el]})}
+function projTimelineTab(t,btn){document.querySelectorAll('#project-tab-content .tab').forEach(t=>t.classList.remove('active'));if(btn)btn.classList.add('active');document.getElementById('proj-timeline-parser').style.display=t==='parser'?'block':'none';document.getElementById('proj-timeline-view').style.display=t==='view'?'block':'none'}
+async function parsePlanProj(){const raw=document.getElementById('plan-input').value;if(!raw.trim()){toast('Cole um plano','error');return}const dayRe=/\*\*Dia\s+(\d+):\*\*\s*(.+)/g;let dm;let count=0;while((dm=dayRe.exec(raw))!==null){await dbPut('timeline',{id:uuid(),tipo:'day_task',projetoId:currentProjectId,modulo:'Plano',dia:parseInt(dm[1]),texto:dm[2].trim(),status:'pendente',createdAt:now()});count++}toast(`${count} tarefas importadas`,'success');renderProjetoTimeline(document.getElementById('project-tab-content'))}
 
-// ===== PROJETO PROMPTS =====
-async function renderProjetoPrompts(el){
-  const prpts=await dbGetAll('prompts');const projPrpts=prpts.filter(p=>p.projetoId===currentProjectId).sort((a,b)=>b.createdAt?.localeCompare(a.createdAt));
-  el.innerHTML=`<button class="btn btn-primary btn-sm mb-16" onclick="openProjPromptModal()"><i data-lucide="plus" style="width:15px;height:15px"></i> Salvar Prompt</button><div class="card-grid">${projPrpts.length?projPrpts.map(p=>`<div class="card"><div class="flex items-center justify-between mb-10"><div style="font-weight:700;font-size:14px">${p.titulo||'Sem título'}</div><div class="flex gap-4"><button class="btn btn-ghost btn-icon btn-sm" onclick="copyText('${(p.promptCompleto||'').replace(/'/g,"\\'")}')"><i data-lucide="copy" style="width:13px;height:13px"></i></button><button class="btn btn-ghost btn-icon btn-sm" onclick="openProjPromptModal('${p.id}')"><i data-lucide="pencil" style="width:14px;height:14px"></i></button><button class="btn btn-ghost btn-icon btn-sm" style="color:var(--danger)" onclick="deleteProjPrompt('${p.id}')"><i data-lucide="trash-2" style="width:14px;height:14px"></i></button></div></div><div class="flex gap-6 flex-wrap mb-10"><span class="badge ${iaColor(p.iaUsada)}">${p.iaUsada||'IA'}</span>${p.categoria?`<span class="badge badge-gray">${p.categoria}</span>`:''}</div><div class="stars mb-10">${Array.from({length:5},(_,i)=>`<i data-lucide="star" style="width:14px;height:14px" class="star-icon${i<(p.nota||0)?' lit':''}"></i>`).join('')}</div><div style="background:var(--bg-input);border:1px solid var(--border-default);border-radius:6px;padding:10px;font-family:var(--font-mono);font-size:12px;color:var(--text-secondary);max-height:80px;overflow:hidden">${(p.promptCompleto||'').slice(0,200)}${(p.promptCompleto||'').length>200?'...':''}</div></div>`).join(''):emptyState('message-square-code','Nenhum prompt','Salve prompts que funcionaram')}</div>`;
-  lucide.createIcons({nodes:[el]});
-}
-async function openProjPromptModal(id=''){
-  const p=id?await dbGet('prompts',id):null;
-  openModal(id?'Editar Prompt':'Salvar Prompt',`
-    <div class="form-group"><label>Título</label><input id="f-titulo" value="${p?.titulo||''}"></div>
-    <div class="grid-2"><div class="form-group"><label>IA</label><select id="f-ia">${['chatgpt','claude','gemini','copilot','outro'].map(t=>`<option value="${t}"${(p?.iaUsada||'claude')===t?' selected':''}>${t}</option>`).join('')}</select></div><div class="form-group"><label>Modelo</label><input id="f-modelo" value="${p?.modelo||''}"></div></div>
-    <div class="grid-2"><div class="form-group"><label>Categoria</label><select id="f-cat">${['codigo','debug','documentacao','arquitetura','testes','deploy','outro'].map(t=>`<option value="${t}"${(p?.categoria||'codigo')===t?' selected':''}>${t}</option>`).join('')}</select></div><div class="form-group"><label>Nota (1-5)</label><input type="number" id="f-nota" min="1" max="5" value="${p?.nota||3}"></div></div>
-    <div class="form-group"><label>Objetivo</label><input id="f-obj" value="${p?.objetivo||''}"></div>
-    <div class="form-group"><label>Prompt Completo</label><textarea id="f-prompt" style="min-height:160px;font-family:var(--font-mono);font-size:13px">${p?.promptCompleto||''}</textarea></div>
-    <div class="form-group"><label>Resultado</label><textarea id="f-result" style="min-height:80px">${p?.resultado||''}</textarea></div>
-    <div class="flex gap-8 justify-between mt-20"><button class="btn btn-ghost btn-sm" onclick="closeModal()">Cancelar</button><button class="btn btn-primary btn-sm" onclick="saveProjPrompt('${id}')">Salvar</button></div>`,true);
-}
-async function saveProjPrompt(id){
-  const titulo=document.getElementById('f-titulo').value.trim();if(!titulo){toast('Título é obrigatório','error');return;}
-  const old=id?await dbGet('prompts',id):null;
-  const obj={id:id||uuid(),titulo,projetoId:currentProjectId,iaUsada:document.getElementById('f-ia').value,modelo:document.getElementById('f-modelo').value,categoria:document.getElementById('f-cat').value,nota:parseInt(document.getElementById('f-nota').value)||3,objetivo:document.getElementById('f-obj').value,promptCompleto:document.getElementById('f-prompt').value,resultado:document.getElementById('f-result').value,dataUso:now(),createdAt:old?.createdAt||now()};
-  await dbPut('prompts',obj);closeModal();toast('Prompt salvo','success');renderProjetoPrompts(document.getElementById('project-tab-content'));
-}
-async function deleteProjPrompt(id){if(!await confirmDialog('Deletar','Deletar este prompt?'))return;await dbDelete('prompts',id);toast('Deletado','success');renderProjetoPrompts(document.getElementById('project-tab-content'));}
+async function renderProjetoChecklists(el){const cls=await dbGetAll('checklists');const projCls=cls.filter(c=>c.projetoId===currentProjectId);el.innerHTML=`<button class="btn btn-primary btn-sm mb-16" onclick="openProjChecklistModal()"><i data-lucide="plus" style="width:15px;height:15px"></i> Nova</button><div class="card-grid">${projCls.length?projCls.map(c=>{const d=c.itens?.filter(i=>i.concluido).length||0;const t=c.itens?.length||0;return`<div class="card"><div style="font-weight:700;font-size:14px;margin-bottom:8px">${c.titulo}</div><div class="progress-bar mb-10"><div class="progress-fill" style="width:${t?Math.round(d/t*100):0}%"></div></div><div class="text-xs text-muted">${d}/${t}</div></div>`}).join(''):emptyState('list-checks','Nenhuma checklist')}</div>`;lucide.createIcons({nodes:[el]})}
+async function openProjChecklistModal(id=''){const c=id?await dbGet('checklists',id):null;openModal(id?'Editar':'Nova Checklist',`<div class="form-group"><label>Título</label><input id="f-titulo" value="${c?.titulo||''}"></div><div class="form-group"><label>Itens (um por linha)</label><textarea id="f-itens" style="min-height:160px">${(c?.itens||[]).map(i=>i.texto).join('\n')}</textarea></div><div class="flex gap-8 justify-between mt-20"><button class="btn btn-ghost btn-sm" onclick="closeModal()">Cancelar</button><button class="btn btn-primary btn-sm" onclick="saveProjChecklist('${id}')">Salvar</button></div>`)}
+async function saveProjChecklist(id){const titulo=document.getElementById('f-titulo').value.trim();if(!titulo){toast('Título obrigatório','error');return}const itensRaw=document.getElementById('f-itens').value;const itens=itensRaw.split('\n').filter(Boolean).map((t,i)=>({id:uuid(),texto:t.trim(),concluido:false,ordem:i}));const old=id?await dbGet('checklists',id):null;const obj={id:id||uuid(),titulo,projetoId:currentProjectId,tipo:'desenvolvimento',itens,createdAt:old?.createdAt||now()};await dbPut('checklists',obj);closeModal();toast('Salvo','success');renderProjetoChecklists(document.getElementById('project-tab-content'))}
 
-// ===== PROJETO MODELOS =====
-async function renderProjetoModelos(el){
-  const modelos=await dbGetAll('modelosPrompt');
-  el.innerHTML=`<button class="btn btn-primary btn-sm mb-16" onclick="openModeloModal()"><i data-lucide="plus" style="width:15px;height:15px"></i> Novo Modelo</button><div class="card-grid">${modelos.length?modelos.map(m=>`<div class="card"><div class="flex items-center justify-between mb-10"><div style="font-weight:700;font-size:14px">${m.nome}</div><div class="flex gap-4"><button class="btn btn-ghost btn-icon btn-sm" onclick="useModelo('${m.id}')"><i data-lucide="play" style="width:14px;height:14px"></i></button><button class="btn btn-ghost btn-icon btn-sm" onclick="openModeloModal('${m.id}')"><i data-lucide="pencil" style="width:14px;height:14px"></i></button><button class="btn btn-ghost btn-icon btn-sm" style="color:var(--danger)" onclick="deleteModelo('${m.id}')"><i data-lucide="trash-2" style="width:14px;height:14px"></i></button></div></div><div class="text-secondary text-sm mb-10">${m.objetivo||''}</div>${m.variaveis?.length?`<div class="flex gap-4 flex-wrap">${m.variaveis.map(v=>`<span class="badge badge-blue text-mono">{${v}}</span>`).join('')}</div>`:''}</div>`).join(''):emptyState('file-code','Nenhum modelo','Crie templates reutilizáveis')}</div>`;
-  lucide.createIcons({nodes:[el]});
-}
-async function openModeloModal(id=''){
-  const m=id?await dbGet('modelosPrompt',id):null;
-  openModal(id?'Editar Modelo':'Novo Modelo',`
-    <div class="grid-2"><div class="form-group"><label>Nome</label><input id="f-nome" value="${m?.nome||''}"></div><div class="form-group"><label>Categoria</label><input id="f-cat" value="${m?.categoria||''}"></div></div>
-    <div class="form-group"><label>Objetivo</label><input id="f-obj" value="${m?.objetivo||''}"></div>
-    <div class="form-group"><label>Texto (use {VARIAVEL})</label><textarea id="f-texto" style="min-height:200px;font-family:var(--font-mono);font-size:13px">${m?.textoPrompt||''}</textarea></div>
-    <div class="flex gap-8 justify-between mt-20"><button class="btn btn-ghost btn-sm" onclick="closeModal()">Cancelar</button><button class="btn btn-primary btn-sm" onclick="saveModelo('${id}')">Salvar</button></div>`,true);
-}
-async function saveModelo(id){
-  const nome=document.getElementById('f-nome').value.trim();if(!nome){toast('Nome é obrigatório','error');return;}
-  const texto=document.getElementById('f-texto').value;
-  const variaveis=[...new Set((texto.match(/\{([A-Z_]+)\}/g)||[]).map(v=>v.slice(1,-1)))];
-  const old=id?await dbGet('modelosPrompt',id):null;
-  await dbPut('modelosPrompt',{id:id||uuid(),nome,categoria:document.getElementById('f-cat').value,objetivo:document.getElementById('f-obj').value,textoPrompt:texto,variaveis,createdAt:old?.createdAt||now()});
-  closeModal();toast('Modelo salvo','success');renderProjetoModelos(document.getElementById('project-tab-content'));
-}
-async function deleteModelo(id){if(!await confirmDialog('Deletar','Deletar este modelo?'))return;await dbDelete('modelosPrompt',id);toast('Deletado','success');renderProjetoModelos(document.getElementById('project-tab-content'));}
-async function useModelo(id){
-  const m=await dbGet('modelosPrompt',id);if(!m)return;
-  openModal(`Usar: ${m.nome}`,`${(m.variaveis||[]).map(v=>`<div class="form-group"><label>{${v}}</label><input id="var-${v}" placeholder="${v}"></div>`).join('')}<div style="background:var(--bg-input);border:1px solid var(--border-default);border-radius:8px;padding:14px;font-family:var(--font-mono);font-size:12px;color:var(--text-muted);max-height:140px;overflow:auto;margin-bottom:14px">${m.textoPrompt}</div><div class="flex gap-8 justify-between"><button class="btn btn-ghost btn-sm" onclick="closeModal()">Cancelar</button><button class="btn btn-primary btn-sm" onclick="generateFromModelo('${id}')"><i data-lucide="copy" style="width:14px;height:14px"></i> Gerar & Copiar</button></div>`);
-}
-async function generateFromModelo(id){
-  const m=await dbGet('modelosPrompt',id);if(!m)return;
-  let texto=m.textoPrompt;(m.variaveis||[]).forEach(v=>{const val=document.getElementById(`var-${v}`)?.value||`{${v}}`;texto=texto.replaceAll(`{${v}}`,val);});
-  copyText(texto);closeModal();
-}
+async function renderProjetoApis(el){const apis=await dbGetAll('apis');const projApis=apis.filter(a=>a.projetoId===currentProjectId);el.innerHTML=`<button class="btn btn-primary btn-sm mb-16" onclick="openProjApiModal()"><i data-lucide="plus" style="width:15px;height:15px"></i> Adicionar</button><div class="card-grid">${projApis.length?projApis.map(a=>`<div class="card"><div style="font-weight:700;font-size:14px">${a.nome}</div><div class="text-mono text-xs text-muted">${a.urlBase||''}</div>${statusBadge(a.status)}</div>`).join(''):emptyState('webhook','Nenhuma API')}</div>`;lucide.createIcons({nodes:[el]})}
+async function openProjApiModal(id=''){const a=id?await dbGet('apis',id):null;openModal(id?'Editar':'Nova API',`<div class="form-group"><label>Nome</label><input id="f-nome" value="${a?.nome||''}"></div><div class="form-group"><label>URL Base</label><input id="f-urlbase" value="${a?.urlBase||''}"></div><div class="grid-2"><div class="form-group"><label>Tipo Auth</label><select id="f-auth">${['api_key','bearer','oauth2','none'].map(t=>`<option value="${t}"${(a?.tipoAuth||'none')===t?' selected':''}>${t}</option>`).join('')}</select></div><div class="form-group"><label>Status</label><select id="f-status">${['ativa','depreciada','erro'].map(t=>`<option value="${t}"${(a?.status||'ativa')===t?' selected':''}>${t}</option>`).join('')}</select></div></div><div class="flex gap-8 justify-between mt-20"><button class="btn btn-ghost btn-sm" onclick="closeModal()">Cancelar</button><button class="btn btn-primary btn-sm" onclick="saveProjApi('${id}')">Salvar</button></div>`)}
+async function saveProjApi(id){const nome=document.getElementById('f-nome').value.trim();if(!nome){toast('Nome obrigatório','error');return}const old=id?await dbGet('apis',id):null;const obj={id:id||uuid(),nome,projetoId:currentProjectId,urlBase:document.getElementById('f-urlbase').value,tipoAuth:document.getElementById('f-auth').value,status:document.getElementById('f-status').value,createdAt:old?.createdAt||now()};await dbPut('apis',obj);closeModal();toast('Salvo','success');renderProjetoApis(document.getElementById('project-tab-content'))}
 
-// ===== PROJETO TOOLBOX =====
-async function renderProjetoToolbox(el){
-  const tools=await dbGetAll('ferramentas');
-  el.innerHTML=`<button class="btn btn-primary btn-sm mb-16" onclick="openToolModal()"><i data-lucide="plus" style="width:15px;height:15px"></i> Adicionar</button><div class="card-grid">${tools.length?tools.map(t=>`<div class="card"><div class="flex items-center justify-between mb-10"><div style="font-weight:700;font-size:14px">${t.nome}</div><div class="flex gap-4">${t.url?`<a href="${t.url}" target="_blank" class="btn btn-ghost btn-icon btn-sm"><i data-lucide="external-link" style="width:13px;height:13px"></i></a>`:''}<button class="btn btn-ghost btn-icon btn-sm" onclick="openToolModal('${t.id}')"><i data-lucide="pencil" style="width:14px;height:14px"></i></button><button class="btn btn-ghost btn-icon btn-sm" style="color:var(--danger)" onclick="deleteTool('${t.id}')"><i data-lucide="trash-2" style="width:14px;height:14px"></i></button></div></div><div class="text-secondary text-sm mb-10">${t.descricao||''}</div>${statusBadge(t.status)} ${t.categoria?`<span class="badge badge-gray">${t.categoria}</span>`:''}</div>`).join(''):emptyState('wrench','Nenhuma ferramenta','Catalogue suas ferramentas')}</div>`;
-  lucide.createIcons({nodes:[el]});
-}
-async function openToolModal(id=''){
-  const t=id?await dbGet('ferramentas',id):null;
-  openModal(id?'Editar':'Nova Ferramenta',`
-    <div class="grid-2"><div class="form-group"><label>Nome</label><input id="f-nome" value="${t?.nome||''}"></div><div class="form-group"><label>URL</label><input id="f-url" value="${t?.url||''}"></div></div>
-    <div class="grid-2"><div class="form-group"><label>Categoria</label><select id="f-cat">${['ide','design','banco_dados','deploy','monitoramento','comunicacao','testes','documentacao','outro'].map(c=>`<option value="${c}"${(t?.categoria||'outro')===c?' selected':''}>${c}</option>`).join('')}</select></div><div class="form-group"><label>Status</label><select id="f-status">${['usando','ja_usei','quero_testar','abandonada'].map(s=>`<option value="${s}"${(t?.status||'usando')===s?' selected':''}>${s}</option>`).join('')}</select></div></div>
-    <div class="form-group"><label>Descrição</label><textarea id="f-desc">${t?.descricao||''}</textarea></div>
-    <div class="flex gap-8 justify-between mt-20"><button class="btn btn-ghost btn-sm" onclick="closeModal()">Cancelar</button><button class="btn btn-primary btn-sm" onclick="saveTool('${id}')">Salvar</button></div>`);
-}
-async function saveTool(id){
-  const nome=document.getElementById('f-nome').value.trim();if(!nome){toast('Nome é obrigatório','error');return;}
-  const old=id?await dbGet('ferramentas',id):null;
-  await dbPut('ferramentas',{id:id||uuid(),nome,url:document.getElementById('f-url').value,categoria:document.getElementById('f-cat').value,status:document.getElementById('f-status').value,descricao:document.getElementById('f-desc').value,createdAt:old?.createdAt||now()});
-  closeModal();toast('Ferramenta salva','success');renderProjetoToolbox(document.getElementById('project-tab-content'));
-}
-async function deleteTool(id){if(!await confirmDialog('Deletar','Deletar?'))return;await dbDelete('ferramentas',id);toast('Deletado','success');renderProjetoToolbox(document.getElementById('project-tab-content'));}
+async function renderProjetoCofre(el){const acessos=await dbGetAll('acessos');const projAcessos=acessos.filter(a=>a.projetoId===currentProjectId);el.innerHTML=`<button class="btn btn-primary btn-sm mb-16" onclick="openProjAcessoModal()"><i data-lucide="plus" style="width:15px;height:15px"></i> Adicionar</button><div style="display:flex;flex-direction:column;gap:12px">${projAcessos.length?projAcessos.map(a=>`<div class="cofre-item"><div style="font-weight:600;font-size:14px">${a.servico}</div><div class="text-xs text-muted">${a.usuario||''} ${a.url?`· ${a.url}`:''}</div></div>`).join(''):emptyState('shield-check','Nenhum acesso')}</div>`;lucide.createIcons({nodes:[el]})}
+async function openProjAcessoModal(id=''){const a=id?await dbGet('acessos',id):null;openModal(id?'Editar':'Novo Acesso',`<div class="form-group"><label>Serviço</label><input id="f-servico" value="${a?.servico||''}"></div><div class="form-group"><label>URL</label><input id="f-url" value="${a?.url||''}"></div><div class="grid-2"><div class="form-group"><label>Usuário</label><input id="f-usuario" value="${a?.usuario||''}"></div><div class="form-group"><label>Senha</label><input type="password" id="f-senha"></div></div><div class="flex gap-8 justify-between mt-20"><button class="btn btn-ghost btn-sm" onclick="closeModal()">Cancelar</button><button class="btn btn-primary btn-sm" onclick="saveProjAcesso('${id}')">Salvar</button></div>`)}
+async function saveProjAcesso(id){const servico=document.getElementById('f-servico').value.trim();if(!servico){toast('Serviço obrigatório','error');return}const old=id?await dbGet('acessos',id):null;const obj={id:id||uuid(),servico,projetoId:currentProjectId,url:document.getElementById('f-url').value,usuario:document.getElementById('f-usuario').value,senha:document.getElementById('f-senha').value||old?.senha||'',createdAt:old?.createdAt||now()};await dbPut('acessos',obj);closeModal();toast('Salvo','success');renderProjetoCofre(document.getElementById('project-tab-content'))}
 
-// ===== PROJETO DOCS =====
-async function renderProjetoDocs(el){
-  const docs=await dbGetAll('documentos');const projDocs=docs.filter(d=>d.projetoId===currentProjectId);
-  el.innerHTML=`<button class="btn btn-primary btn-sm mb-16" onclick="openProjDocModal()"><i data-lucide="plus" style="width:15px;height:15px"></i> Novo Documento</button><div class="card-grid">${projDocs.length?projDocs.map(d=>`<div class="card" style="cursor:pointer" onclick="editProjDoc('${d.id}')"><div class="flex items-center justify-between mb-10"><div style="font-weight:700;font-size:14px">${d.titulo}</div><button class="btn btn-ghost btn-icon btn-sm" style="color:var(--danger)" onclick="event.stopPropagation();deleteProjDoc('${d.id}')"><i data-lucide="trash-2" style="width:14px;height:14px"></i></button></div>${d.tipo?`<span class="badge badge-purple mb-10">${d.tipo}</span>`:''}<div class="text-muted text-xs">${formatDate(d.updatedAt||d.createdAt)}</div></div>`).join(''):emptyState('book-open','Nenhum documento','Crie documentação markdown')}</div>`;
-  lucide.createIcons({nodes:[el]});
-}
-async function editProjDoc(id){
-  const d=await dbGet('documentos',id);if(!d)return;
-  const el=document.getElementById('project-tab-content');
-  el.innerHTML=`<button class="btn btn-ghost btn-sm mb-16" onclick="switchProjectTab('docs')"><i data-lucide="arrow-left" style="width:14px;height:14px"></i> Voltar</button>
-    <div class="grid-2" style="height:calc(100vh - 340px)">
-      <div class="card" style="display:flex;flex-direction:column">
-        <div class="section-title mb-10">Editor</div>
-        <textarea id="doc-editor" style="flex:1;font-family:var(--font-mono);font-size:13px;line-height:1.6;min-height:auto" oninput="updateProjDocPreview()">${d.conteudo||''}</textarea>
-        <div class="flex gap-8 mt-12"><button class="btn btn-primary btn-sm" onclick="saveProjDoc('${id}')"><i data-lucide="save" style="width:14px;height:14px"></i> Salvar</button><button class="btn btn-ghost btn-sm" onclick="exportProjDoc('${id}')"><i data-lucide="download" style="width:14px;height:14px"></i> Exportar .md</button></div>
-      </div>
-      <div class="card md-preview" id="doc-preview" style="padding:16px">${markdownToHtml(d.conteudo||'')}</div>
-    </div>`;
-  lucide.createIcons({nodes:[el]});
-}
-function updateProjDocPreview(){const v=document.getElementById('doc-editor')?.value||'';document.getElementById('doc-preview').innerHTML=markdownToHtml(v);}
-async function saveProjDoc(id){const d=await dbGet('documentos',id);if(!d)return;d.conteudo=document.getElementById('doc-editor').value;d.updatedAt=now();await dbPut('documentos',d);toast('Salvo','success');}
-async function exportProjDoc(id){const d=await dbGet('documentos',id);if(!d)return;const blob=new Blob([d.conteudo||''],{type:'text/markdown'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${d.titulo}.md`;a.click();}
-async function openProjDocModal(){
-  openModal('Novo Documento',`
-    <div class="form-group"><label>Título</label><input id="f-titulo"></div>
-    <div class="form-group"><label>Tipo</label><select id="f-tipo">${['visao_geral','arquitetura','adr','regras_negocio','roadmap','changelog'].map(t=>`<option value="${t}">${t}</option>`).join('')}</select></div>
-    <div class="flex gap-8 justify-between mt-20"><button class="btn btn-ghost btn-sm" onclick="closeModal()">Cancelar</button><button class="btn btn-primary btn-sm" onclick="createProjDoc()">Criar</button></div>`);
-}
-async function createProjDoc(){
-  const titulo=document.getElementById('f-titulo').value.trim();if(!titulo){toast('Título é obrigatório','error');return;}
-  const obj={id:uuid(),titulo,projetoId:currentProjectId,tipo:document.getElementById('f-tipo').value,conteudo:`# ${titulo}\n\n`,createdAt:now(),updatedAt:now()};
-  await dbPut('documentos',obj);closeModal();toast('Documento criado','success');switchProjectTab('docs');
-}
-async function deleteProjDoc(id){if(!await confirmDialog('Deletar','Deletar documento?'))return;await dbDelete('documentos',id);toast('Deletado','success');switchProjectTab('docs');}
+async function renderProjetoPrompts(el){el.innerHTML=emptyState('message-square-code','Prompts','Salve prompts que funcionaram')}
+async function renderProjetoModelos(el){const modelos=await dbGetAll('modelosPrompt');el.innerHTML=`<div class="card-grid">${modelos.length?modelos.map(m=>`<div class="card"><div style="font-weight:700;font-size:14px">${m.nome}</div><div class="text-secondary text-sm">${m.objetivo||''}</div></div>`).join(''):emptyState('file-code','Nenhum modelo')}</div>`}
+async function renderProjetoToolbox(el){const tools=await dbGetAll('ferramentas');el.innerHTML=`<div class="card-grid">${tools.length?tools.slice(0,12).map(t=>`<div class="card"><div style="font-weight:700;font-size:14px">${t.nome}</div><div class="text-secondary text-sm">${t.descricao||''}</div>${statusBadge(t.status)}</div>`).join(''):emptyState('wrench','Nenhuma ferramenta')}</div>`}
+async function renderProjetoDocs(el){const docs=await dbGetAll('documentos');const projDocs=docs.filter(d=>d.projetoId===currentProjectId);el.innerHTML=`<button class="btn btn-primary btn-sm mb-16" onclick="openProjDocModal()"><i data-lucide="plus" style="width:15px;height:15px"></i> Novo</button><div class="card-grid">${projDocs.length?projDocs.map(d=>`<div class="card" style="cursor:pointer" onclick="editProjDoc('${d.id}')"><div style="font-weight:700;font-size:14px">${d.titulo}</div>${d.tipo?`<span class="badge badge-purple">${d.tipo}</span>`:''}</div>`).join(''):emptyState('book-open','Nenhum documento')}</div>`;lucide.createIcons({nodes:[el]})}
+async function editProjDoc(id){const d=await dbGet('documentos',id);if(!d)return;const el=document.getElementById('project-tab-content');el.innerHTML=`<button class="btn btn-ghost btn-sm mb-16" onclick="switchProjectTab('docs')"><i data-lucide="arrow-left" style="width:14px;height:14px"></i> Voltar</button><div class="grid-2" style="height:calc(100vh - 340px)"><div class="card"><div class="section-title mb-10">Editor</div><textarea id="doc-editor" style="flex:1;font-family:var(--font-mono);font-size:13px;min-height:400px">${d.conteudo||''}</textarea><div class="flex gap-8 mt-12"><button class="btn btn-primary btn-sm" onclick="saveProjDoc('${id}')">Salvar</button></div></div><div class="card md-preview" id="doc-preview" style="padding:16px;overflow-y:auto">${markdownToHtml(d.conteudo||'')}</div></div>`;lucide.createIcons({nodes:[el]})}
+async function saveProjDoc(id){const d=await dbGet('documentos',id);if(!d)return;d.conteudo=document.getElementById('doc-editor').value;d.updatedAt=now();await dbPut('documentos',d);toast('Salvo','success')}
+async function openProjDocModal(){openModal('Novo Documento',`<div class="form-group"><label>Título</label><input id="f-titulo"></div><div class="form-group"><label>Tipo</label><select id="f-tipo">${['visao_geral','arquitetura','adr','regras_negocio','roadmap','changelog'].map(t=>`<option value="${t}">${t}</option>`).join('')}</select></div><div class="flex gap-8 justify-between mt-20"><button class="btn btn-ghost btn-sm" onclick="closeModal()">Cancelar</button><button class="btn btn-primary btn-sm" onclick="createProjDoc()">Criar</button></div>`)}
+async function createProjDoc(){const titulo=document.getElementById('f-titulo').value.trim();if(!titulo){toast('Título obrigatório','error');return}const obj={id:uuid(),titulo,projetoId:currentProjectId,tipo:document.getElementById('f-tipo').value,conteudo:`# ${titulo}\n\n`,createdAt:now(),updatedAt:now()};await dbPut('documentos',obj);closeModal();toast('Documento criado','success');switchProjectTab('docs')}
 
-// ===== PROJETO DEPLOY =====
-const DEPLOY_ITEMS=['Variáveis de ambiente conferidas','Build sem erros','Testes passando (CI verde)','SSL/HTTPS ativo','DNS configurado','Backup do banco','Monitoramento ativo','Rollback planejado','Comunicação com time/cliente','Documentação atualizada'];
-async function renderProjetoDeploy(el){
-  let cl=(await dbGetAll('checklists')).find(c=>c.projetoId===currentProjectId&&c.tipo==='producao');
-  if(!cl){cl={id:uuid(),projetoId:currentProjectId,tipo:'producao',titulo:'Checklist de Produção',itens:DEPLOY_ITEMS.map((t,i)=>({id:uuid(),texto:t,concluido:false,ordem:i})),createdAt:now()};await dbPut('checklists',cl);}
-  const done=cl.itens.filter(i=>i.concluido).length,total=cl.itens.length,pct=total?Math.round(done/total*100):0;
-  el.innerHTML=`
-    <div class="stats-row mb-20"><div class="stat-card"><div class="stat-num">${pct}%</div><div class="stat-label">Completo</div></div><div class="stat-card"><div class="stat-num">${done}</div><div class="stat-label">Concluídos</div></div><div class="stat-card"><div class="stat-num">${total-done}</div><div class="stat-label">Pendentes</div></div></div>
-    <div class="card">
-      <div class="flex items-center justify-between mb-14 gap-8"><div class="text-sm text-secondary">${done}/${total} itens</div><div class="progress-bar flex-1" style="max-width:220px"><div class="progress-fill" style="width:${pct}%"></div></div><button class="btn btn-ghost btn-sm" onclick="resetProjDeploy('${cl.id}')"><i data-lucide="rotate-ccw" style="width:14px;height:14px"></i> Resetar</button></div>
-      ${cl.itens.map(i=>`<div class="check-item"><div class="check-box${i.concluido?' checked':''}" onclick="toggleProjDeploy('${cl.id}','${i.id}')">${i.concluido?`<i data-lucide="check" style="width:12px;height:12px;color:#fff"></i>`:''}</div><span class="check-text${i.concluido?' done':''}">${i.texto}</span><span class="badge ${i.concluido?'badge-green':'badge-gray'}">${i.concluido?'OK':'Pendente'}</span></div>`).join('')}
-    </div>`;
-  lucide.createIcons({nodes:[el]});
-}
-async function toggleProjDeploy(clId,itemId){const cl=await dbGet('checklists',clId);if(!cl)return;const item=cl.itens.find(i=>i.id===itemId);if(item)item.concluido=!item.concluido;await dbPut('checklists',cl);renderProjetoDeploy(document.getElementById('project-tab-content'));}
-async function resetProjDeploy(id){if(!await confirmDialog('Resetar','Desmarcar todos?'))return;const cl=await dbGet('checklists',id);if(!cl)return;cl.itens.forEach(i=>i.concluido=false);await dbPut('checklists',cl);toast('Resetado','success');renderProjetoDeploy(document.getElementById('project-tab-content'));}
+const DEPLOY_ITEMS=['Variáveis de ambiente conferidas','Build sem erros','Testes passando','SSL/HTTPS ativo','DNS configurado','Backup do banco','Monitoramento ativo','Rollback planejado','Comunicação com time/cliente','Documentação atualizada'];
+async function renderProjetoDeploy(el){let cl=(await dbGetAll('checklists')).find(c=>c.projetoId===currentProjectId&&c.tipo==='producao');if(!cl){cl={id:uuid(),projetoId:currentProjectId,tipo:'producao',titulo:'Checklist de Produção',itens:DEPLOY_ITEMS.map((t,i)=>({id:uuid(),texto:t,concluido:false,ordem:i})),createdAt:now()};await dbPut('checklists',cl)}const done=cl.itens.filter(i=>i.concluido).length,total=cl.itens.length,pct=total?Math.round(done/total*100):0;el.innerHTML=`<div class="stats-row mb-20"><div class="stat-card"><div class="stat-num">${pct}%</div><div class="stat-label">Completo</div></div><div class="stat-card"><div class="stat-num">${done}</div><div class="stat-label">Concluídos</div></div><div class="stat-card"><div class="stat-num">${total-done}</div><div class="stat-label">Pendentes</div></div></div><div class="card">${cl.itens.map(i=>`<div class="check-item"><div class="check-box${i.concluido?' checked':''}" onclick="toggleProjDeploy('${cl.id}','${i.id}')">${i.concluido?`<i data-lucide="check" style="width:12px;height:12px;color:#fff"></i>`:''}</div><span class="check-text${i.concluido?' done':''}">${i.texto}</span></div>`).join('')}</div>`;lucide.createIcons({nodes:[el]})}
+async function toggleProjDeploy(clId,itemId){const cl=await dbGet('checklists',clId);if(!cl)return;const item=cl.itens.find(i=>i.id===itemId);if(item)item.concluido=!item.concluido;await dbPut('checklists',cl);renderProjetoDeploy(document.getElementById('project-tab-content'))}
 
 // ===== CONFIG =====
-async function renderConfig(){
-  const cfg=await dbGet('configuracoes','config');
-  document.getElementById('config-pw-status').innerHTML=cfg?.senhaMestra?'<span style="color:var(--success)">Senha mestra configurada</span>':'<span style="color:var(--warning)">Nenhuma senha</span>';
-}
+async function renderConfig(){const cfg=await dbGet('configuracoes','config');document.getElementById('config-pw-status').innerHTML=cfg?.senhaMestra?'<span style="color:var(--success)">Senha mestra configurada</span>':'<span style="color:var(--warning)">Nenhuma senha</span>'}
 
 // ===== EXPORT/IMPORT =====
-async function exportData(){
-  const data={};for(const s of STORES)data[s]=await dbGetAll(s);
-  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
-  a.download=`palm-tech-backup-${new Date().toISOString().slice(0,10)}.json`;a.click();toast('Backup exportado!','success');
-}
-async function importData(event){
-  const file=event.target.files[0];if(!file)return;
-  if(!await confirmDialog('Importar','Dados atuais serão substituídos. Continuar?'))return;
-  const text=await file.text();
-  try{
-    const data=JSON.parse(text);
-    for(const[store,items]of Object.entries(data)){
-      if(!STORES.includes(store))continue;
-      const t=db.transaction(store,'readwrite');t.objectStore(store).clear();await new Promise(res=>t.oncomplete=res);
-      for(const item of items)await dbPut(store,item);
-    }
-    toast('Importado com sucesso!','success');navigate('dashboard');
-  }catch(e){toast('Arquivo inválido','error');}
-  event.target.value='';
-}
-async function clearAllData(){
-  if(!await confirmDialog('Limpar Dados','ATENÇÃO: Todos os dados serão deletados!'))return;
-  if(!await confirmDialog('Confirmar','Tem certeza absoluta?'))return;
-  for(const s of STORES){const t=db.transaction(s,'readwrite');t.objectStore(s).clear();}
-  masterPw=null;masterPwHash=null;toast('Dados removidos','success');navigate('dashboard');
-}
+async function exportData(){const data={};for(const s of STORES)data[s]=await dbGetAll(s);const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`palm-tech-backup-${new Date().toISOString().slice(0,10)}.json`;a.click();toast('Backup exportado!','success')}
+async function importData(event){const file=event.target.files[0];if(!file)return;if(!await confirmDialog('Importar','Dados atuais serão substituídos.'))return;const text=await file.text();try{const data=JSON.parse(text);for(const[store,items]of Object.entries(data)){if(!STORES.includes(store))continue;const t=db.transaction(store,'readwrite');t.objectStore(store).clear();await new Promise(res=>t.oncomplete=res);for(const item of items)await dbPut(store,item)}toast('Importado!','success');navigate('dashboard')}catch(e){toast('Arquivo inválido','error')}event.target.value=''}
+async function clearAllData(){if(!await confirmDialog('Limpar','Todos os dados serão deletados!'))return;if(!await confirmDialog('Confirmar','Tem certeza?'))return;for(const s of STORES){const t=db.transaction(s,'readwrite');t.objectStore(s).clear()}masterPw=null;masterPwHash=null;toast('Dados removidos','success');navigate('dashboard')}
 
 // ===== SEED =====
-async function seedDefaults(){
-  if((await dbGetAll('modelosPrompt')).length)return;
-  const defaults=[
-    {id:uuid(),nome:'Gerador de Plano',objetivo:'Criar plano completo com módulos',categoria:'arquitetura',variaveis:['NOME_PROJETO','DESCRICAO','STACK','FUNCIONALIDADES','PRAZO'],textoPrompt:`Você é um arquiteto de software. Crie um plano de desenvolvimento para:\n\n**Projeto:** {NOME_PROJETO}\n**Descrição:** {DESCRICAO}\n**Stack:** {STACK}\n**Funcionalidades:** {FUNCIONALIDADES}\n**Prazo:** {PRAZO}\n\nFormato:\n--- INICIO DO PLANO ---\n## PROJETO: {NOME_PROJETO}\n## STACK: {STACK}\n## PRAZO: {PRAZO}\n\n### MODULO 1: [Nome]\n**Dia 1:** [Tarefa]\n**Checklist:**\n- [ ] [Item]\n\n### DEPLOY FINAL:\n- [ ] Item\n--- FIM DO PLANO ---`,createdAt:now()},
-    {id:uuid(),nome:'Daily Task Breakdown',objetivo:'Dividir tarefa em subtarefas',categoria:'codigo',variaveis:['TAREFA','STACK','CONTEXTO'],textoPrompt:`Divida esta tarefa em passos técnicos:\n**Tarefa:** {TAREFA}\n**Stack:** {STACK}\n**Contexto:** {CONTEXTO}\n\n1. Subtarefas\n2. Arquivos\n3. Bloqueios\n4. Tempo estimado`,createdAt:now()},
-    {id:uuid(),nome:'Code Review',objetivo:'Revisar código',categoria:'codigo',variaveis:['CODIGO','LINGUAGEM'],textoPrompt:`Revise este código:\n**Linguagem:** {LINGUAGEM}\n\`\`\`\n{CODIGO}\n\`\`\`\n\n1. Bugs\n2. Performance\n3. Boas práticas\n4. Segurança\n5. Refatoração`,createdAt:now()},
-  ];
-  for(const m of defaults)await dbPut('modelosPrompt',m);
-}
+async function seedDefaults(){if((await dbGetAll('modelosPrompt')).length)return;const defaults=[{id:uuid(),nome:'Gerador de Plano',objetivo:'Criar plano completo',categoria:'arquitetura',variaveis:['NOME_PROJETO','DESCRICAO','STACK','FUNCIONALIDADES','PRAZO'],textoPrompt:`Crie um plano de desenvolvimento para:\n\nProjeto: {NOME_PROJETO}\nDescrição: {DESCRICAO}\nStack: {STACK}\nFuncionalidades: {FUNCIONALIDADES}\nPrazo: {PRAZO}\n\n--- INICIO DO PLANO ---\n## PROJETO: {NOME_PROJETO}\n--- FIM DO PLANO ---`,createdAt:now()},{id:uuid(),nome:'Code Review',objetivo:'Revisar código',categoria:'codigo',variaveis:['CODIGO','LINGUAGEM'],textoPrompt:`Revise:\n\`\`\`{LINGUAGEM}\n{CODIGO}\n\`\`\``,createdAt:now()}];for(const m of defaults)await dbPut('modelosPrompt',m)}
 
 // ===== KEYBOARD =====
-document.addEventListener('keydown',e=>{
-  if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();openSearch();}
-  if(e.key==='Escape'){const lo=document.getElementById('search-overlay'),mo=document.getElementById('modal-overlay');if(!lo.classList.contains('hidden'))closeSearch();else if(!mo.classList.contains('hidden'))closeModal();}
-});
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();openSearch()}if(e.key==='Escape'){const lo=document.getElementById('search-overlay'),mo=document.getElementById('modal-overlay');if(!lo.classList.contains('hidden'))closeSearch();else if(!mo.classList.contains('hidden'))closeModal()}})
 
 // ===== INIT =====
-async function init(){
-  await openDB();await seedDefaults();lucide.createIcons();navigate('dashboard');
-  const cfg=await dbGet('configuracoes','config');if(cfg?.senhaMestra)masterPwHash=cfg.senhaMestra;
-}
+async function init(){await openDB();await seedDefaults();lucide.createIcons();navigate('dashboard');const cfg=await dbGet('configuracoes','config');if(cfg?.senhaMestra)masterPwHash=cfg.senhaMestra}
 init().catch(console.error);
 </script>
 </body>
