@@ -2265,38 +2265,176 @@ function showImportDocModal(projectId=null){
 }
 
 function analyzeDoc(text){
-  const lines=text.split('\n');
-  const checklists=[];let currentCL=null;
-  const tools=[];const apis=[];const docs=[];
-  // detect checklists
-  lines.forEach(line=>{
-    if(/^#+\s/.test(line)){
-      if(currentCL&&currentCL.itens.length>0)checklists.push(currentCL);
-      currentCL={id:uuid(),titulo:line.replace(/^#+\s*/,'').trim(),tipo:'desenvolvimento',itens:[],createdAt:now()};
-    }else if(/^\s*-\s*\[.\]/.test(line)){
-      if(!currentCL)currentCL={id:uuid(),titulo:'Importado',tipo:'desenvolvimento',itens:[],createdAt:now()};
-      currentCL.itens.push({id:uuid(),texto:line.replace(/^\s*-\s*\[.\]\s*/,'').trim(),concluido:false,ordem:currentCL.itens.length});
+  const lines = text.split('\n');
+  const checklists = [];
+  let currentCL = null;
+  const tools = [];
+  const apis = [];
+  const docs = [];
+  
+  // ========== 1. DETECTA CHECKLISTS ==========
+  for(const line of lines){
+    // Títulos de checklist (começam com ## ou ###)
+    if(/^#{2,3}\s+/.test(line)){
+      if(currentCL && currentCL.itens.length > 0) checklists.push(currentCL);
+      currentCL = {
+        id: uuid(),
+        titulo: line.replace(/^#{2,3}\s+/, '').trim(),
+        tipo: 'desenvolvimento',
+        itens: [],
+        createdAt: now()
+      };
     }
-  });
-  if(currentCL&&currentCL.itens.length>0)checklists.push(currentCL);
-  // detect tools from tables or lists
-  lines.forEach(line=>{
-    const toolPatterns=[/(?:Ferramenta|Tool|IDE|Framework):\s*([A-Za-z][A-Za-z0-9 .]+)/i];
-    toolPatterns.forEach(p=>{const m=line.match(p);if(m)tools.push({id:uuid(),nome:m[1].trim(),categoria:'outro',status:'usando',descricao:'',url:'',createdAt:now()})});
-  });
-  // detect APIs
-  lines.forEach(line=>{
-    const apiPat=/API[:\s]+([A-Za-z0-9 -]+)/i;const m=line.match(apiPat);
-    if(m)apis.push({id:uuid(),nome:m[1].trim(),urlBase:'',tipoAuth:'none',status:'ativa',endpointsUsados:[],documentacao:'',createdAt:now()});
-  });
-  // sections as docs
-  const sections=text.split(/^#{1,2}\s/m).filter(s=>s.trim());
-  sections.slice(0,5).forEach(s=>{
-    const firstLine=s.split('\n')[0].trim();
-    if(firstLine.length>3&&firstLine.length<80)
-      docs.push({id:uuid(),titulo:firstLine,conteudo:'# '+firstLine+'\n\n'+s.split('\n').slice(1).join('\n').trim(),tipo:'visao_geral',createdAt:now(),updatedAt:now()});
-  });
-  return{checklists,tools,apis,docs};
+    // Itens de checklist com - [ ]
+    else if(/^\s*-\s*\[[ x]\]/i.test(line)){
+      if(!currentCL){
+        currentCL = {
+          id: uuid(),
+          titulo: 'Importado',
+          tipo: 'desenvolvimento',
+          itens: [],
+          createdAt: now()
+        };
+      }
+      const texto = line.replace(/^\s*-\s*\[[ x]\]\s*/i, '').trim();
+      if(texto){
+        currentCL.itens.push({
+          id: uuid(),
+          texto: texto,
+          concluido: false,
+          ordem: currentCL.itens.length
+        });
+      }
+    }
+  }
+  if(currentCL && currentCL.itens.length > 0) checklists.push(currentCL);
+
+  // ========== 2. DETECTA FERRAMENTAS ==========
+  const toolPatterns = [
+    /Ferramenta:\s*([^\n]+)/i,
+    /Tool:\s*([^\n]+)/i,
+    /IDE:\s*([^\n]+)/i,
+    /Framework:\s*([^\n]+)/i
+  ];
+  for(const line of lines){
+    for(const pattern of toolPatterns){
+      const m = line.match(pattern);
+      if(m){
+        tools.push({
+          id: uuid(),
+          nome: m[1].trim(),
+          categoria: 'outro',
+          status: 'usando',
+          descricao: '',
+          url: '',
+          createdAt: now()
+        });
+        break;
+      }
+    }
+  }
+
+  // ========== 3. DETECTA APIs ==========
+  let inApiBlock = false;
+  let currentApi = null;
+  for(let i = 0; i < lines.length; i++){
+    const line = lines[i];
+    // Título da API com ###
+    if(/^###\s+/.test(line) && (line.toLowerCase().includes('api') || (currentApi && !currentApi.nome))){
+      if(currentApi && currentApi.nome) apis.push(currentApi);
+      currentApi = {
+        id: uuid(),
+        nome: line.replace(/^###\s+/, '').trim(),
+        urlBase: '',
+        auth: 'none',
+        status: 'ativa',
+        endpoints: [],
+        createdAt: now()
+      };
+      inApiBlock = true;
+    }
+    else if(currentApi && /URL Base:/i.test(line)){
+      const match = line.match(/URL Base:\s*(.+)/i);
+      if(match) currentApi.urlBase = match[1].trim();
+    }
+    else if(currentApi && /Auth:/i.test(line)){
+      const match = line.match(/Auth:\s*(.+)/i);
+      if(match) currentApi.auth = match[1].trim();
+    }
+    else if(currentApi && /Status:/i.test(line)){
+      const match = line.match(/Status:\s*(.+)/i);
+      if(match) currentApi.status = match[1].trim();
+    }
+    else if(currentApi && /(POST|GET|PUT|DELETE|PATCH)\|/.test(line)){
+      currentApi.endpoints.push(line.trim());
+    }
+  }
+  if(currentApi && currentApi.nome) apis.push(currentApi);
+
+  // ========== 4. DETECTA DOCUMENTOS - CORRIGIDO! ==========
+  // Procura pela seção ## DOCUMENTOS
+  const docSectionMatch = text.match(/## DOCUMENTOS([\s\S]*?)(?=\n## [A-Z]|\n$|$)/i);
+  if(docSectionMatch){
+    let docText = docSectionMatch[1];
+    // Divide por ### ou por ### Número. Título
+    const blocks = docText.split(/\n###\s+/);
+    
+    for(let i = 1; i < blocks.length; i++){
+      let block = blocks[i];
+      if(!block.trim()) continue;
+      
+      // Pega a primeira linha como título
+      const firstLine = block.split('\n')[0].trim();
+      let titulo = firstLine;
+      
+      // Remove números como "1. " do início
+      titulo = titulo.replace(/^\d+\.\s*/, '');
+      
+      // Resto do conteúdo
+      let conteudo = block.split('\n').slice(1).join('\n').trim();
+      
+      // Se o conteúdo for muito curto mas o bloco for grande, pega tudo
+      if(conteudo.length < 20 && block.length > 50){
+        conteudo = block.substring(firstLine.length).trim();
+      }
+      
+      if(titulo && titulo.length > 2 && titulo.length < 150){
+        docs.push({
+          id: uuid(),
+          titulo: titulo,
+          conteudo: conteudo || 'Conteúdo da documentação',
+          tipo: 'documentacao',
+          createdAt: now(),
+          updatedAt: now()
+        });
+      }
+    }
+  }
+  
+  // Fallback: se não encontrou documentos pelo ## DOCUMENTOS, tenta por seções
+  if(docs.length === 0){
+    const sections = text.split(/^#{1,2}\s+/m).filter(s => s.trim());
+    for(const s of sections){
+      const firstLine = s.split('\n')[0].trim();
+      if(firstLine.length > 3 && firstLine.length < 100 && 
+         !firstLine.toLowerCase().includes('checklist') &&
+         !firstLine.toLowerCase().includes('ferramenta') &&
+         !firstLine.toLowerCase().includes('api')){
+        docs.push({
+          id: uuid(),
+          titulo: firstLine,
+          conteudo: '# ' + firstLine + '\n\n' + s.split('\n').slice(1).join('\n').trim(),
+          tipo: 'documentacao',
+          createdAt: now(),
+          updatedAt: now()
+        });
+      }
+    }
+  }
+
+  console.log(`📊 Detectados: ${checklists.length} checklists, ${tools.length} ferramentas, ${apis.length} APIs, ${docs.length} documentos`);
+  
+  return { checklists, tools, apis, docs };
 }
 
 // ══════════════════════════════════════════════
